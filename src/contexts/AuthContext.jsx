@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import Loading from "../components/Loading/Index";
 
 export const AuthContext = createContext();
 
@@ -27,7 +28,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   if (loading) {
-    return <h2>carregando...</h2>;
+    return <Loading />;
   }
 
   return (
