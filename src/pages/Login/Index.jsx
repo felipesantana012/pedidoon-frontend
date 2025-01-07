@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import { apiService } from "../../services/apiService"; // Importe o apiService
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -18,21 +19,13 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, senha }),
-      });
-
-      if (!response.ok) {
+      const data = await apiService.post("auth/login", { email, senha });
+      if (data.token) {
+        login(data.token);
+        navigate("/home");
+      } else {
         throw new Error("Login falhou");
       }
-
-      const data = await response.json();
-      login(data.token);
-      navigate("/home");
     } catch (error) {
       console.error("Erro ao logar:", error);
       alert("Usuário ou senha inválidos");

@@ -4,7 +4,7 @@ import styles from "./PaginaBase.module.css";
 
 const PaginaBase = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <Header />
       <main>
         <Outlet />
