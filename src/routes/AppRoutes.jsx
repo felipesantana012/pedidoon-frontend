@@ -30,7 +30,14 @@ const AppRoutes = () => (
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<NaoEncontrada />} />
+        <Route
+          path="*"
+          element={
+            <ProtectedRoute>
+              <NaoEncontrada />
+            </ProtectedRoute>
+          }
+        />
       </Route>
     </Routes>
   </BrowserRouter>

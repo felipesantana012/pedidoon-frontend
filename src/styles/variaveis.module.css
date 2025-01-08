@@ -1,0 +1,23 @@
+:root {
+  --cor-branca: #ffffff;
+  --cor-preta: #222222;
+
+  --cor-cinza-claro: #f1f1f1;
+  --cor-cinza-medio: #e6e6e6;
+
+  --cor-amarela-claro: #fcef3e;
+  --cor-amarela-medio: #ffb223;
+
+  --cor-laranja-claro: #ff8800;
+  --cor-laranja-medio: #ff6a00;
+
+  --cor-vermelha: #b40000;
+  --cor-verde: #00be19;
+
+  --fonte-titulo: "Lugrasimo", cursive;
+  --fonte-texto: "Raleway", sans-serif;
+
+  --transicao: all 0.2s ease-in-out;
+  --transform-scale: scale(1.06);
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
