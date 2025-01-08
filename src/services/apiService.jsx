@@ -22,12 +22,15 @@ export const fetchData = async (endpoint, method = "GET", data = null) => {
     const response = await fetch(`${BASE_URL}/api/${endpoint}`, options);
 
     if (!response.ok) {
-      throw new Error(`Erro na requisição: ${response.statusText}`);
+      const errorData = await response.json().catch(() => ({})); // Previne falhas no JSON
+      const errorMessage =
+        errorData.error || response.statusText || "Erro desconhecido";
+      throw { status: response.status, message: errorMessage, data: errorData };
     }
 
     return await response.json();
   } catch (error) {
-    console.error("Erro ao realizar a requisição:", error);
+    console.error(error);
     throw error;
   }
 };

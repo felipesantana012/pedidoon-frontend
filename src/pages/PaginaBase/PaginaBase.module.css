@@ -1,9 +1,10 @@
 .container {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 
 .main {
+  min-height: 90vh;
   width: 100%;
   max-width: 80rem;
   margin: 0 auto;
