@@ -7,6 +7,7 @@
 body {
   font-family: var(--fonte-texto);
   color: var(--cor-preta);
+  background-color: var(--cor-cinza-claro);
 }
 
 h1,

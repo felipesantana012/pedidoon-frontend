@@ -1,9 +1,9 @@
 :root {
-  --cor-branca: #f1f1f1;
+  --cor-branca: #ffffff;
   --cor-preta: #222222;
 
-  --cor-cinza-claro: #e6e6e6;
-  --cor-cinza-medio: #b3b3b3;
+  --cor-cinza-claro: #f1f1f1;
+  --cor-cinza-medio: #e6e6e6;
 
   --cor-amarela-claro: #fcef3e;
   --cor-amarela-medio: #ffb223;
@@ -18,6 +18,6 @@
   --fonte-texto: "Raleway", sans-serif;
 
   --transicao: all 0.2s ease-in-out;
-  --transform-scale: scale(1.1);
-  --box-shadow: 2px 3px 20px 1px rgb(37, 37, 37);
+  --transform-scale: scale(1.06);
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

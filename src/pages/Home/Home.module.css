@@ -1,0 +1,47 @@
+.home {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.container_cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
+  text-decoration: none;
+  color: var(--cor-preta);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  transition: var(--transicao);
+}
+
+.card:hover {
+  transform: var(--transform-scale);
+  box-shadow: inset 3px 0px 3px 0px var(--cor-amarela-claro);
+}
+
+.card:active {
+  box-shadow: inset 3px 1px 3px 2px var(--cor-amarela-claro);
+}
+
+.card h2 {
+  color: var(--cor-amarela-medio);
+}
+
+.icon {
+  font-size: 4rem;
+  color: var(--cor-amarela-medio);
+}
