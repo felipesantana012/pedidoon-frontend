@@ -18,3 +18,11 @@ h5,
 h6 {
   font-family: var(--fonte-titulo);
 }
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}

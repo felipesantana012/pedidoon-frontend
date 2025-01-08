@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../../services/apiService.jsx";
 import styles from "./Header.module.css";
-import { FaArrowRightFromBracket } from "react-icons/fa6";
+import { FaArrowRightFromBracket, FaRegAddressBook } from "react-icons/fa6";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link } from "react-router-dom";
+import { FiMenu } from "react-icons/fi";
+import { FaHome } from "react-icons/fa";
+import { BiFoodMenu } from "react-icons/bi";
+import { GiPriceTag } from "react-icons/gi";
+import { GrDocumentConfig } from "react-icons/gr";
 
 const Header = () => {
   const [imgLogo, setImgLogo] = useState("");
