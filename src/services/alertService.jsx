@@ -24,10 +24,9 @@ export const showAlertDelete = (onConfirm) => {
 };
 
 // Função para alertas de sucesso
-export const showAlertSuccess = (title, text) => {
+export const showAlertSuccess = (title) => {
   Swal.fire({
     title,
-    text,
     icon: "success",
     confirmButtonColor: "#72d630",
   });

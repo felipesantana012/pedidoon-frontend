@@ -1,0 +1,9 @@
+.cadastro_cardapio {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.cadastro_cardapio h1 {
+  font-size: 1.3rem;
+  text-align: center;
+}
