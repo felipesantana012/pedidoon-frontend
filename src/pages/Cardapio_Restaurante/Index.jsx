@@ -1,15 +1,36 @@
+import React, { useState, useEffect } from "react";
 import styles from "./Cardapio_Restaurante.module.css";
-import { useNavigate } from "react-router-dom";
+import { apiService } from "../../services/apiService";
+import Loading from "../../components/Loading/Index";
+import FormCadastroCategoria from "../../components/FormCadastroCategoria";
+import FormCadastroItem from "../../components/FormCadastroItem";
 
 const Cardapio_Restaurante = () => {
-  const navigate = useNavigate();
+  const [categorias, setCategorias] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const getCategorias = async () => {
+      setLoading(true);
+      try {
+        const data = await apiService.get("categorias");
+        setCategorias(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getCategorias();
+  }, []);
+
   return (
-    <div>
-      Cardapio_Restaurante
-      <button className={styles.btn_voltar} onClick={() => navigate(-1)}>
-        Voltar
-      </button>
-    </div>
+    <section className={styles.cadastro_cardapio}>
+      {loading && <Loading />}
+      <h1>Cadastro do Cardápio</h1>
+      <FormCadastroCategoria setCategorias={setCategorias} />
+      <FormCadastroItem categorias={categorias} />
+    </section>
   );
 };
 

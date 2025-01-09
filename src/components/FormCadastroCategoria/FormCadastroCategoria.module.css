@@ -1,0 +1,51 @@
+.cadastro_cardapio_categoria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--cor-branca);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: var(--box-shadow);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 50%;
+}
+
+.input_label label {
+  font-size: 0.9rem;
+  font-family: var(--fonte-titulo);
+}
+
+.inputs {
+  color: var(--cor-preta);
+  padding: 8px;
+  border: 1px solid var(--cor-amarela-medio);
+  border-radius: 10px;
+  outline-color: var(--cor-amarela-medio);
+  width: 100%;
+  box-shadow: var(--box-shadow);
+}
+
+.btn_cadastro {
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: var(--cor-preta);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--cor-amarela-medio);
+}
+
+.btn_cadastro:hover {
+  background-color: var(--cor-amarela-claro);
+}
+
+@media screen and (max-width: 700px) {
+  .form {
+    width: 100%;
+  }
+}

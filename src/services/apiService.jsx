@@ -15,7 +15,11 @@ export const fetchData = async (endpoint, method = "GET", data = null) => {
       headers: getHeaders(),
     };
 
-    if (data) {
+    // Remove o cabeçalho Content-Type se data for FormData
+    if (data instanceof FormData) {
+      delete options.headers["Content-Type"]; // Fetch define automaticamente
+      options.body = data;
+    } else if (data) {
       options.body = JSON.stringify(data);
     }
 
