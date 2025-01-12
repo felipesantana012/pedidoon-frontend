@@ -1,0 +1,60 @@
+.categoria {
+  background-color: var(--cor-branca);
+  margin: 1rem 0;
+  padding: 1rem 0;
+  position: relative;
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+}
+
+.categoria input {
+  padding: 0.3rem;
+  border: 1px solid var(--cor-amarela-medio);
+  border-radius: 0.5rem;
+  outline: none;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.btn_acoes {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.btn_acoes button {
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  color: var(--cor-branca);
+  transition: var(--transicao);
+}
+
+.btn_acoes button:hover {
+  opacity: 1;
+}
+
+.salvar {
+  background-color: var(--cor-verde);
+}
+
+.cancelar {
+  background-color: var(--cor-vermelha);
+}
+
+.editar {
+  color: var(--cor-amarela-medio);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.deletar {
+  color: var(--cor-vermelha);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
