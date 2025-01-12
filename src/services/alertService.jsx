@@ -13,12 +13,7 @@ export const showAlertDelete = (onConfirm) => {
     cancelButtonText: "Cancelar",
   }).then((result) => {
     if (result.isConfirmed && onConfirm) {
-      onConfirm(); // Executa a ação de confirmação
-      Swal.fire({
-        title: "Deletado!",
-        text: "Deleção realizada com sucesso!",
-        icon: "success",
-      });
+      onConfirm();
     }
   });
 };

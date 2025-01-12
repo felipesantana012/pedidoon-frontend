@@ -4,6 +4,7 @@ import { BiFoodMenu } from "react-icons/bi";
 import { GiPriceTag } from "react-icons/gi";
 import { FaRegAddressBook } from "react-icons/fa";
 import { GrDocumentConfig } from "react-icons/gr";
+import { LuTextSelect } from "react-icons/lu";
 
 const Home = () => {
   return (
@@ -11,22 +12,27 @@ const Home = () => {
       <h1>Menu Inicial</h1>
 
       <section className={styles.container_cards}>
-        <Link className={styles.card} to="/cardapio_restaurante">
-          <h2>Cardapio</h2>
+        <Link className={styles.card} to="/cadastrar_cardapio">
+          <h2>Cadastrar Cardapio</h2>
           <BiFoodMenu className={styles.icon} />
-          <p>Gerencie suas categorias e itens</p>
+          <p>Cadastre suas categorias e itens</p>
         </Link>
-        <Link className={styles.card} to="/cardapio_restaurante">
+        <Link className={styles.card} to="/modificar_cardapio">
+          <h2>Modificar Cardapio</h2>
+          <LuTextSelect className={styles.icon} />
+          <p>Modifique suas categorias ou itens</p>
+        </Link>
+        <Link className={styles.card} to="/cadastrar_cardapio">
           <h2>Promoção do dia</h2>
           <GiPriceTag className={styles.icon} />
           <p>Escolha um item para Promoção do dia</p>
         </Link>
-        <Link className={styles.card} to="/cardapio_restaurante">
+        <Link className={styles.card} to="/cadastrar_cardapio">
           <h2>Endereço e Rede Sociais</h2>
           <FaRegAddressBook className={styles.icon} />
           <p>Atualize seu Endereco e Rede Sociais</p>
         </Link>
-        <Link className={styles.card} to="/cardapio_restaurante">
+        <Link className={styles.card} to="/cadastrar_cardapio">
           <h2>Outras Configurações</h2>
           <GrDocumentConfig className={styles.icon} />
           <p>Edite seus dados de Perfil</p>
