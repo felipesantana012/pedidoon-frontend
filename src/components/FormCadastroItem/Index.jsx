@@ -119,7 +119,7 @@ const FormCadastroItem = ({ categorias }) => {
         <div className={styles.input_label}>
           <label>Preço do Item</label>
           <input
-            type="number"
+            type="text"
             name="preco"
             value={novoItem.preco}
             onChange={handleInputChange}
