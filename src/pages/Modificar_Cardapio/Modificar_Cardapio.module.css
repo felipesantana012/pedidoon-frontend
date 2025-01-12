@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.container h1 {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.categorias_itens {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: var(--box-shadow);
+  gap: 2rem;
+}
+
+.categorias {
+  background-color: var(--cor-branca);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.categoria {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.categoria input {
+  padding: 0.3rem;
+  border: 1px solid var(--cor-amarela-medio);
+  border-radius: 0.5rem;
+  outline: none;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.categoria .deletar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.5rem;
+  color: var(--cor-vermelha);
+  cursor: pointer;
+  margin: 0.3rem;
+  opacity: 0.8;
+}
+
+.categoria .salvar {
+  font-size: 1.5rem;
+  margin: 0.3rem;
+  color: var(--cor-verde);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.categoria .salvar:hover,
+.categoria .deletar:hover {
+  opacity: 1;
+}

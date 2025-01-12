@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { apiService } from "../../services/apiService";
 import { showAlertError, showAlertSuccess } from "../../services/alertService";
 import Loading from "../Loading/Index";
@@ -13,6 +13,8 @@ const FormCadastroItem = ({ categorias }) => {
     tipo: "",
     descricao: "",
   });
+
+  const fileInputRef = useRef(null);
 
   const [loading, setLoading] = useState(false);
 
@@ -43,11 +45,16 @@ const FormCadastroItem = ({ categorias }) => {
         tipo: "",
         descricao: "",
       });
+
+      // Limpando o valor do input file
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
     } catch (error) {
       if (error.status) {
         showAlertError(error.message);
       } else {
-        showAlertError("Erro inesperado ao realizar o login");
+        showAlertError("Erro inesperado ao cadastrar Item");
       }
     } finally {
       setLoading(false);
@@ -103,6 +110,7 @@ const FormCadastroItem = ({ categorias }) => {
           <input
             type="file"
             name="img"
+            ref={fileInputRef}
             onChange={handleInputChange}
             className={styles.inputs}
             required

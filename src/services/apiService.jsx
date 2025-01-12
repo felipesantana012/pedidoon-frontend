@@ -32,6 +32,10 @@ export const fetchData = async (endpoint, method = "GET", data = null) => {
       throw { status: response.status, message: errorMessage, data: errorData };
     }
 
+    if (response.status === 204) {
+      return null;
+    }
+
     return await response.json();
   } catch (error) {
     console.error(error);
