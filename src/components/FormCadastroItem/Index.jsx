@@ -1,10 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { apiService } from "../../services/apiService";
 import { showAlertError, showAlertSuccess } from "../../services/alertService";
-import Loading from "../Loading/Index";
+import Loading from "../Loading";
 import styles from "./FormCadastroItem.module.css";
 
 const FormCadastroItem = ({ categorias }) => {
+  const [loading, setLoading] = useState(false);
+
   const [novoItem, setNovoItem] = useState({
     categoria_id: "",
     nome: "",
@@ -16,20 +18,15 @@ const FormCadastroItem = ({ categorias }) => {
 
   const fileInputRef = useRef(null);
 
-  const [loading, setLoading] = useState(false);
-
   const handleNovoItemSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
       const formData = new FormData();
-      formData.append("categoria_id", novoItem.categoria_id);
-      formData.append("nome", novoItem.nome);
-      formData.append("img", novoItem.img);
-      formData.append("preco", novoItem.preco);
-      formData.append("tipo", novoItem.tipo);
-      formData.append("descricao", novoItem.descricao);
+      Object.keys(novoItem).forEach((key) => {
+        formData.append(key, novoItem[key]);
+      });
 
       const response = await apiService.post(
         `categorias/${novoItem.categoria_id}/itens`,
@@ -76,23 +73,19 @@ const FormCadastroItem = ({ categorias }) => {
         <h2>Cadastre Novo Item</h2>
         <div className={styles.input_label}>
           <label htmlFor="">Selecione uma categoria</label>
-          {categorias.length > 0 ? (
-            <select
-              name="categoria_id"
-              value={novoItem.categoria_id}
-              onChange={handleInputChange}
-              className={styles.inputs}
-            >
-              <option value="">Selecione uma categoria</option>
-              {categorias.map((categoria) => (
-                <option key={categoria.id} value={categoria.id}>
-                  {categoria.nome}
-                </option>
-              ))}
-            </select>
-          ) : (
-            <p>Nenhuma categoria encontrada.</p>
-          )}
+          <select
+            name="categoria_id"
+            value={novoItem.categoria_id}
+            onChange={handleInputChange}
+            className={styles.inputs}
+          >
+            <option value="">Selecione uma categoria</option>
+            {categorias.map((categoria) => (
+              <option key={categoria.id} value={categoria.id}>
+                {categoria.nome}
+              </option>
+            ))}
+          </select>
         </div>
         <div className={styles.input_label}>
           <label>Nome do Item</label>
