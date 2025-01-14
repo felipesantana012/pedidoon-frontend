@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { apiService } from "../../services/apiService";
 import styles from "./Login.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Loading from "../../components/Loading/Index";
+import Loading from "../../components/Loading";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -55,6 +55,12 @@ const Login = () => {
 
   return (
     <div className={styles.container_login}>
+      <header>
+        <p>
+          Pedid<strong>OO</strong>n
+        </p>
+      </header>
+
       <h1>Login Restaurante</h1>
       <form onSubmit={handleLogin} className={styles.form_login}>
         <label>Email</label>
@@ -86,6 +92,18 @@ const Login = () => {
           Entrar
         </button>
       </form>
+
+      <footer>
+        <p>
+          Não tem uma conta?{" "}
+          <a
+            href="https://wa.me/5531999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20uma%20conta%20no%20PeddidOOn"
+            target="_blank"
+          >
+            Solicite Agora!
+          </a>
+        </p>
+      </footer>
     </div>
   );
 };

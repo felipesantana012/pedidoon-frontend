@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
 import { apiService } from "../services/apiService";
-import {
-  showAlertDelete,
-  showAlertError,
-  showAlertSuccess,
-} from "../services/alertService";
+import { showAlertError, showAlertSuccess } from "../services/alertService";
 
 export const useCategorias = () => {
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [categoriaEditada, setCategoriaEditada] = useState({});
 
-  // Função para buscar categorias
   const fetchCategorias = async () => {
     setLoading(true);
     try {
@@ -28,7 +22,19 @@ export const useCategorias = () => {
     fetchCategorias();
   }, []);
 
-  // Função para excluir categoria
+  const handleCreateCategoria = async (nome) => {
+    setLoading(true);
+    try {
+      const novaCategoria = await apiService.post("categorias", { nome });
+      setCategorias((prev) => [...prev, novaCategoria]);
+      showAlertSuccess("Categoria adicionada com sucesso!");
+    } catch (error) {
+      showAlertError("Erro ao adicionar categoria", error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleDeleteCategoria = async (categoriaId) => {
     setLoading(true);
     try {
@@ -42,7 +48,6 @@ export const useCategorias = () => {
     }
   };
 
-  // Função para atualizar categoria
   const handleUpdateCategoria = async (categoriaId, nome) => {
     setLoading(true);
     try {
@@ -61,6 +66,7 @@ export const useCategorias = () => {
   return {
     categorias,
     loading,
+    handleCreateCategoria,
     handleDeleteCategoria,
     handleUpdateCategoria,
   };

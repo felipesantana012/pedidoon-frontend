@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from "../pages/Login";
 import Home from "../pages/Home";
 import NaoEncontrada from "../pages/NaoEncontrada";
@@ -8,9 +8,10 @@ import ProtectedRoute from "../routes/ProtectedRoute";
 import Home_Cliente from "../pages/Home_Cliente/Index";
 import Cadastrar_Cardapio from "../pages/Cadastrar_Cardapio/Index";
 import Modificar_Cardapio from "../pages/Modificar_Cardapio/Index";
+import { AuthProvider } from "../contexts/AuthContext";
 
 const AppRoutes = () => (
-  <BrowserRouter>
+  <AuthProvider>
     <Routes>
       <Route path="/" element={<Home_Cliente />} />
       <Route path="/login" element={<Login />} />
@@ -49,7 +50,7 @@ const AppRoutes = () => (
         />
       </Route>
     </Routes>
-  </BrowserRouter>
+  </AuthProvider>
 );
 
 export default AppRoutes;

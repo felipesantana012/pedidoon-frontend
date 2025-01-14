@@ -7,6 +7,9 @@ const Footer = () => {
       <Link to="/">Site Cliente</Link>
 
       <h4>©Inova Software</h4>
+      <p>
+        Pedid<strong>OO</strong>n
+      </p>
     </footer>
   );
 };

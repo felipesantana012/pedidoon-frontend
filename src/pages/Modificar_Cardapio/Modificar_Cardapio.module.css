@@ -9,3 +9,14 @@
   font-size: 1.3rem;
   text-align: center;
 }
+
+.listaCategorias {
+  width: 100%;
+  text-align: center;
+}
+
+.categorias_itens {
+  background-color: var(--cor-branca);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+}

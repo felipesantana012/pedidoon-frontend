@@ -1,7 +1,8 @@
 import { useCategorias } from "../../hooks/useCategorias";
 import Loading from "../../components/Loading";
-import CategoriaList from "../../components/Categoria/CategoriaList";
 import styles from "./Modificar_Cardapio.module.css";
+import Modificar_Categoria from "../../components/Modificar_Categoria/Index";
+import Modificar_Itens from "../../components/Modificar_Itens/Index";
 
 const ModificarCardapio = () => {
   const { categorias, loading, handleDeleteCategoria, handleUpdateCategoria } =
@@ -11,11 +12,21 @@ const ModificarCardapio = () => {
     <div className={styles.container}>
       {loading && <Loading />}
       <h1>Modificar Cardápio</h1>
-      <CategoriaList
-        categorias={categorias}
-        onDeleteCategoria={handleDeleteCategoria}
-        onUpdateCategoria={handleUpdateCategoria}
-      />
+
+      {categorias.length === 0 && <p>Nenhuma categoria cadastrada</p>}
+      <div className={styles.listaCategorias}>
+        {categorias.map((categoria) => (
+          <div className={styles.categorias_itens} key={categoria.id}>
+            <Modificar_Categoria
+              categoria={categoria}
+              onDeleteCategoria={handleDeleteCategoria}
+              onUpdateCategoria={handleUpdateCategoria}
+            />
+
+            <Modificar_Itens categoria_id={categoria.id} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

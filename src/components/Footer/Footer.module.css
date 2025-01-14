@@ -31,3 +31,12 @@
   font-weight: 100;
   color: var(--cor-cinza-medio);
 }
+
+.rodape p {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
