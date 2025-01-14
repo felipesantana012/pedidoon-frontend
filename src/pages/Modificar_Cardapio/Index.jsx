@@ -13,6 +13,7 @@ const ModificarCardapio = () => {
       {loading && <Loading />}
       <h1>Modificar Cardápio</h1>
 
+      {categorias.length === 0 && <p>Nenhuma categoria cadastrada</p>}
       <div className={styles.listaCategorias}>
         {categorias.map((categoria) => (
           <div className={styles.categorias_itens} key={categoria.id}>
