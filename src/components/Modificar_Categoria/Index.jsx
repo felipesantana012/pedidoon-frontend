@@ -1,10 +1,14 @@
 import { useState } from "react";
-import styles from "./CategoriaItem.module.css";
-import { showAlertDelete } from "../../../services/alertService";
+import styles from "./Modificar_Categoria.module.css";
+import { showAlertDelete } from "../../services/alertService";
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const CategoriaItem = ({ categoria, onDeleteCategoria, onUpdateCategoria }) => {
+const Modificar_Categoria = ({
+  categoria,
+  onDeleteCategoria,
+  onUpdateCategoria,
+}) => {
   const [editando, setEditando] = useState(false);
   const [nome, setNome] = useState(categoria.nome);
 
@@ -54,4 +58,4 @@ const CategoriaItem = ({ categoria, onDeleteCategoria, onUpdateCategoria }) => {
   );
 };
 
-export default CategoriaItem;
+export default Modificar_Categoria;

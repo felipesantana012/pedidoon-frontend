@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import { apiService } from "../../services/apiService";
-import { showAlertError, showAlertSuccess } from "../../services/alertService";
 import Loading from "../Loading";
 import styles from "./FormCadastroItem.module.css";
+import { useItens } from "../../hooks/useItens";
 
 const FormCadastroItem = ({ categorias }) => {
-  const [loading, setLoading] = useState(false);
+  const { handleCreateItem, loading } = useItens();
+  const fileInputRef = useRef(null);
 
   const [novoItem, setNovoItem] = useState({
     categoria_id: "",
@@ -16,45 +16,19 @@ const FormCadastroItem = ({ categorias }) => {
     descricao: "",
   });
 
-  const fileInputRef = useRef(null);
-
   const handleNovoItemSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-
-    try {
-      const formData = new FormData();
-      Object.keys(novoItem).forEach((key) => {
-        formData.append(key, novoItem[key]);
-      });
-
-      const response = await apiService.post(
-        `categorias/${novoItem.categoria_id}/itens`,
-        formData
-      );
-
-      showAlertSuccess(`Item ${response.nome} cadastrado com sucesso!`);
-      setNovoItem({
-        categoria_id: "",
-        nome: "",
-        img: "",
-        preco: "",
-        tipo: "",
-        descricao: "",
-      });
-
-      // Limpando o valor do input file
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
-    } catch (error) {
-      if (error.status) {
-        showAlertError(error.message);
-      } else {
-        showAlertError("Erro inesperado ao cadastrar Item");
-      }
-    } finally {
-      setLoading(false);
+    await handleCreateItem(novoItem);
+    setNovoItem({
+      categoria_id: "",
+      nome: "",
+      img: "",
+      preco: "",
+      tipo: "",
+      descricao: "",
+    });
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
     }
   };
 

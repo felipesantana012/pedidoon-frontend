@@ -1,23 +1,17 @@
 import React, { useState } from "react";
 import styles from "./FormCadastroCategoria.module.css";
-import Loading from "../Loading";
-import { useCategorias } from "../../hooks/useCategorias";
 
 const FormCadastroCategoria = ({ handleCreateCategoria }) => {
-  const { loading } = useCategorias();
   const [categoriaNome, setCategoriaNome] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (categoriaNome.trim()) {
-      await handleCreateCategoria(categoriaNome);
-      setCategoriaNome("");
-    }
+    await handleCreateCategoria(categoriaNome);
+    setCategoriaNome("");
   };
 
   return (
     <div className={styles.cadastro_cardapio_categoria}>
-      {loading && <Loading />}
       <form onSubmit={handleSubmit} className={styles.form}>
         <h2>Cadastre nova categoria</h2>
         <div className={styles.input_label}>
