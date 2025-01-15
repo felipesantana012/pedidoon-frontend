@@ -1,7 +1,15 @@
 .container {
   width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
   padding: 1rem 0.5rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 2rem;
+  list-style: none;
+  justify-self: center;
+}
+
+.itens {
+  height: 15rem;
 }

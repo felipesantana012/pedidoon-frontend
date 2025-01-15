@@ -1,0 +1,81 @@
+.cardItem {
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: var(--transicao);
+}
+
+.cardItem:hover {
+  box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.3);
+}
+
+.indisponivel {
+  border: 1px solid var(--cor-vermelha);
+  border-radius: 0.5rem;
+  opacity: 0.5;
+}
+
+.cardItem img {
+  width: 100%;
+  height: 40%;
+  padding: 0.5rem;
+  object-fit: contain;
+}
+
+.info_container {
+  padding: 0 0.5rem;
+}
+
+.info_price {
+  color: var(--cor-verde);
+  font-weight: bold;
+}
+
+.info_description {
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  display: -webkit-box; /* Necessário para o suporte ao line-clamp */
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: calc(1.5em * 2);
+}
+
+.buttons {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.buttons button:hover {
+  filter: brightness(0.9);
+}
+
+.buttons .editar {
+  background-color: var(--cor-amarela-medio);
+  width: 70%;
+  padding: 0.3rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--cor-branca);
+  cursor: pointer;
+  transition: var(--transicao);
+}
+
+.buttons .deletar {
+  color: var(--cor-vermelha);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.buttons .deletar:hover {
+  filter: brightness(0.9);
+  transform: var(--transform-scale);
+}
