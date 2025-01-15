@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { apiService } from "../services/apiService";
 import { showAlertError, showAlertSuccess } from "../services/alertService";
 
@@ -11,6 +11,18 @@ export const useItens = () => {
     try {
       const response = await apiService.get(`categorias/${categoria_id}/itens`);
       setItens(response); // Atualiza os itens com os dados da API
+    } catch (error) {
+      showAlertError("Erro ao carregar itens", error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchAllItensDisponiveisRestaurante = async () => {
+    setLoading(true);
+    try {
+      const response = await apiService.get("/itens_disponiveis");
+      setItens(response);
     } catch (error) {
       showAlertError("Erro ao carregar itens", error.message);
     } finally {
@@ -81,6 +93,7 @@ export const useItens = () => {
     itens,
     loading,
     fetchItens,
+    fetchAllItensDisponiveisRestaurante,
     handleCreateItem,
     handleDeleteItem,
     handleUpdateItem,

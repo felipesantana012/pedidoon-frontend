@@ -22,7 +22,7 @@ const Home = () => {
           <LuTextSelect className={styles.icon} />
           <p>Modifique suas categorias ou itens</p>
         </Link>
-        <Link className={styles.card} to="/cadastrar_cardapio">
+        <Link className={styles.card} to="/promocao_dia">
           <h2>Promoção do dia</h2>
           <GiPriceTag className={styles.icon} />
           <p>Escolha um item para Promoção do dia</p>

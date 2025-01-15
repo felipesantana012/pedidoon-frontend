@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.container h1 {
+  font-size: 1.3rem;
+}
+
+.todos_itens {
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+
+  border: 1px solid black;
+  padding: 0.5rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 2rem;
+  list-style: none;
+  justify-self: center;
+}
+
+.itens {
+  border: 1px solid rgb(70, 221, 0);
+  cursor: pointer;
+}
