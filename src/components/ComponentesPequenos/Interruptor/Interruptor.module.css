@@ -1,0 +1,37 @@
+.interruptor {
+  width: 3.5rem;
+  height: 1.5rem;
+  background-color: var(--cor-cinza-medio);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ativo {
+  background-color: var(--cor-verde);
+  opacity: 0.9;
+}
+
+.inativo {
+  background-color: var(--cor-cinza-medio);
+  opacity: 0.9;
+}
+
+.botao {
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: var(--cor-branca);
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.ativo .botao {
+  transform: translateX(2rem);
+}
+
+.inativo .botao {
+  transform: translateX(0.3rem);
+}
