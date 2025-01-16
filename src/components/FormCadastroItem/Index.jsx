@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import Loading from "../Loading";
 import styles from "./FormCadastroItem.module.css";
 import { useItens } from "../../hooks/useItens";
+import Button from "../ComponentesPequenos/Button";
+import Input from "../ComponentesPequenos/Input";
 
 const FormCadastroItem = ({ categorias }) => {
   const { handleCreateItem, loading } = useItens();
@@ -51,7 +53,7 @@ const FormCadastroItem = ({ categorias }) => {
             name="categoria_id"
             value={novoItem.categoria_id}
             onChange={handleInputChange}
-            className={styles.inputs}
+            className={styles.select}
           >
             <option value="">Selecione uma categoria</option>
             {categorias.map((categoria) => (
@@ -62,13 +64,13 @@ const FormCadastroItem = ({ categorias }) => {
           </select>
         </div>
         <div className={styles.input_label}>
-          <label>Nome do Item</label>
-          <input
+          <Input
+            label="Nome do Item"
             type="text"
-            name="nome"
             value={novoItem.nome}
-            onChange={handleInputChange}
-            className={styles.inputs}
+            funcao={handleInputChange}
+            id="nome"
+            name="nome"
             required
           />
         </div>
@@ -79,46 +81,41 @@ const FormCadastroItem = ({ categorias }) => {
             name="img"
             ref={fileInputRef}
             onChange={handleInputChange}
-            className={styles.inputs}
+            className={styles.select}
             required
           />
         </div>
         <div className={styles.input_label}>
-          <label>Preço do Item</label>
-          <input
-            type="text"
-            name="preco"
+          <Input
+            label="Preço do Item"
             value={novoItem.preco}
-            onChange={handleInputChange}
-            className={styles.inputs}
+            funcao={handleInputChange}
+            id="preco"
+            name="preco"
             required
           />
         </div>
         <div className={styles.input_label}>
-          <label>Tipo Ou Tamanho</label>
-          <input
-            type="text"
-            name="tipo"
+          <Input
+            label="Tipo Ou Tamanho"
             value={novoItem.tipo}
-            onChange={handleInputChange}
-            className={styles.inputs}
+            funcao={handleInputChange}
+            id="tipo"
+            name="tipo"
             required
           />
         </div>
         <div className={styles.input_label}>
-          <label>Descrição</label>
-          <input
-            type="text"
-            name="descricao"
+          <Input
+            label="Descrição"
             value={novoItem.descricao}
-            onChange={handleInputChange}
-            className={styles.inputs}
+            funcao={handleInputChange}
+            id="descricao"
+            name="descricao"
             required
           />
         </div>
-        <button type="submit" className={styles.btn_cadastro}>
-          Adicionar Item
-        </button>
+        <Button nome="Adicionar Item" type="submit" />
       </form>
     </div>
   );

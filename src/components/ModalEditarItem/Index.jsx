@@ -1,5 +1,7 @@
 import Interruptor from "../ComponentesPequenos/Interruptor/Interruptor";
 import styles from "./ModalEditarItem.module.css";
+import Input from "../ComponentesPequenos/Input";
+import Button from "../ComponentesPequenos/Button";
 
 const ModalEditarItem = ({
   editedItem,
@@ -29,45 +31,38 @@ const ModalEditarItem = ({
           />
         </div>
 
-        <label htmlFor="img">Imagem</label>
-        <input
+        <Input
+          label="Imagem"
           type="file"
           name="img"
           id="img"
-          className={styles.inputField}
-          onChange={handleInputChange}
+          funcao={handleInputChange}
         />
 
-        <label htmlFor="nome">Nome</label>
-        <input
-          type="text"
+        <Input
+          label="Nome"
+          value={editedItem.nome}
           name="nome"
           id="nome"
-          value={editedItem.nome}
-          onChange={handleInputChange}
-          className={styles.inputField}
+          funcao={handleInputChange}
           placeholder="Nome"
         />
 
-        <label htmlFor="tipo">Tipo</label>
-        <input
-          type="text"
+        <Input
+          label="Tipo"
+          value={editedItem.tipo}
           name="tipo"
           id="tipo"
-          value={editedItem.tipo}
-          onChange={handleInputChange}
-          className={styles.inputField}
+          funcao={handleInputChange}
           placeholder="Tipo"
         />
 
-        <label htmlFor="preco">Preço</label>
-        <input
-          type="number"
+        <Input
+          label="Preço"
+          value={editedItem.preco}
           name="preco"
           id="preco"
-          value={editedItem.preco}
-          onChange={handleInputChange}
-          className={styles.inputField}
+          funcao={handleInputChange}
           placeholder="Preço"
         />
 
@@ -82,18 +77,12 @@ const ModalEditarItem = ({
         />
 
         <div className={styles.modal_buttons}>
-          <button
-            className={styles.modal_button_save}
-            onClick={handleSaveClick}
-          >
-            Salvar
-          </button>
-          <button
-            className={styles.modal_button_cancel}
-            onClick={handleCancelClick}
-          >
-            Cancelar
-          </button>
+          <Button funcao={handleSaveClick} nome="Salvar" />
+          <Button
+            funcao={handleCancelClick}
+            nome="Cancelar"
+            background="#b40000"
+          />
         </div>
       </div>
     </div>

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import { BiFoodMenu } from "react-icons/bi";
 import { GiPriceTag } from "react-icons/gi";
-import { FaRegAddressBook } from "react-icons/fa";
 import { GrDocumentConfig } from "react-icons/gr";
 import { LuTextSelect } from "react-icons/lu";
 
@@ -27,13 +26,8 @@ const Home = () => {
           <GiPriceTag className={styles.icon} />
           <p>Escolha um item para Promoção do dia</p>
         </Link>
-        <Link className={styles.card} to="/cadastrar_cardapio">
-          <h2>Endereço e Rede Sociais</h2>
-          <FaRegAddressBook className={styles.icon} />
-          <p>Atualize seu Endereco e Rede Sociais</p>
-        </Link>
-        <Link className={styles.card} to="/cadastrar_cardapio">
-          <h2>Outras Configurações</h2>
+        <Link className={styles.card} to="/configuracoes">
+          <h2>Configurações</h2>
           <GrDocumentConfig className={styles.icon} />
           <p>Edite seus dados de Perfil</p>
         </Link>

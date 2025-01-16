@@ -10,6 +10,7 @@ import Cadastrar_Cardapio from "../pages/Cadastrar_Cardapio/Index";
 import Modificar_Cardapio from "../pages/Modificar_Cardapio/Index";
 import { AuthProvider } from "../contexts/AuthContext";
 import Promocao_Dia from "../pages/Promocao_Dia/Index";
+import Configuracoes from "../pages/Configuracoes/Index";
 
 const AppRoutes = () => (
   <AuthProvider>
@@ -46,6 +47,14 @@ const AppRoutes = () => (
           element={
             <ProtectedRoute>
               <Promocao_Dia />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/configuracoes"
+          element={
+            <ProtectedRoute>
+              <Configuracoes />
             </ProtectedRoute>
           }
         />
