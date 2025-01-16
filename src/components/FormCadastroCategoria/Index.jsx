@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "./FormCadastroCategoria.module.css";
+import Input from "../ComponentesPequenos/Input";
+import Button from "../ComponentesPequenos/Button/Index";
 
 const FormCadastroCategoria = ({ handleCreateCategoria }) => {
   const [categoriaNome, setCategoriaNome] = useState("");
@@ -15,19 +17,19 @@ const FormCadastroCategoria = ({ handleCreateCategoria }) => {
       <form onSubmit={handleSubmit} className={styles.form}>
         <h2>Cadastre nova categoria</h2>
         <div className={styles.input_label}>
-          <label htmlFor="categoriaNome">Nome da Categoria</label>
-          <input
-            id="categoriaNome"
-            type="text"
+          <Input
+            label="Nome da Categoria"
             value={categoriaNome}
-            onChange={(e) => setCategoriaNome(e.target.value)}
-            className={styles.inputs}
+            funcao={(e) => setCategoriaNome(e.target.value)}
+            id="categoriaNome"
             required
           />
         </div>
-        <button type="submit" className={styles.btn_cadastro}>
-          Adicionar Categoria
-        </button>
+        <Button
+          type="submit"
+          className={styles.btn_cadastro}
+          nome=" Adicionar Categoria"
+        />
       </form>
     </div>
   );

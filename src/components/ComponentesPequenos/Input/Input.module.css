@@ -1,0 +1,19 @@
+.content_input {
+  display: flex;
+  flex-direction: column;
+}
+
+.content_input label {
+  font-size: 0.9rem;
+}
+
+.content_input input {
+  width: 100%;
+  margin: 0.2rem 0;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--cor-amarela-claro);
+  border-radius: 0.5rem;
+  outline-color: var(--cor-amarela-medio);
+  box-shadow: var(--box-shadow);
+}

@@ -31,13 +31,12 @@
   font-size: 0.8rem;
 }
 
-.inputField,
 .textAreaField {
   width: 100%;
   margin: 0.3rem 0;
   padding: 0.8rem;
   font-size: 1rem;
-  border: 1px solid var(--cor-cinza-medio);
+  border: 1px solid var(--cor-amarela-claro);
   border-radius: 0.5rem;
   outline-color: var(--cor-amarela-medio);
 }
@@ -50,25 +49,6 @@
 }
 .modal_buttons button {
   width: 40%;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  border: none;
-  color: var(--cor-branca);
-  opacity: 0.8;
-  transition: var(--transicao);
-}
-
-.modal_buttons button:hover {
-  opacity: 1;
-}
-
-.modal_button_save {
-  background-color: var(--cor-verde);
-}
-
-.modal_button_cancel {
-  background-color: var(--cor-vermelha);
 }
 
 .interruptor {
