@@ -29,7 +29,7 @@
 }
 
 .content_img {
-  height: 7rem;
+  height: 10rem;
   display: flex;
   flex-direction: column;
 }
