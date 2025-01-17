@@ -20,7 +20,7 @@ const FormCadastroCategoria = ({ handleCreateCategoria }) => {
           <Input
             label="Nome da Categoria"
             value={categoriaNome}
-            funcao={(e) => setCategoriaNome(e.target.value)}
+            onChange={(e) => setCategoriaNome(e.target.value)}
             id="categoriaNome"
             required
           />

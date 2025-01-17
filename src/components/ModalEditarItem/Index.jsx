@@ -1,7 +1,7 @@
 import Interruptor from "../ComponentesPequenos/Interruptor/Interruptor";
 import styles from "./ModalEditarItem.module.css";
 import Input from "../ComponentesPequenos/Input";
-import Button from "../ComponentesPequenos/Button";
+import Button from "../ComponentesPequenos/Button/Index";
 
 const ModalEditarItem = ({
   editedItem,
@@ -36,7 +36,7 @@ const ModalEditarItem = ({
           type="file"
           name="img"
           id="img"
-          funcao={handleInputChange}
+          onChange={handleInputChange}
         />
 
         <Input
@@ -44,7 +44,7 @@ const ModalEditarItem = ({
           value={editedItem.nome}
           name="nome"
           id="nome"
-          funcao={handleInputChange}
+          onChange={handleInputChange}
           placeholder="Nome"
         />
 
@@ -53,7 +53,7 @@ const ModalEditarItem = ({
           value={editedItem.tipo}
           name="tipo"
           id="tipo"
-          funcao={handleInputChange}
+          onChange={handleInputChange}
           placeholder="Tipo"
         />
 
@@ -62,7 +62,7 @@ const ModalEditarItem = ({
           value={editedItem.preco}
           name="preco"
           id="preco"
-          funcao={handleInputChange}
+          onChange={handleInputChange}
           placeholder="Preço"
         />
 
@@ -77,9 +77,9 @@ const ModalEditarItem = ({
         />
 
         <div className={styles.modal_buttons}>
-          <Button funcao={handleSaveClick} nome="Salvar" />
+          <Button onClick={handleSaveClick} nome="Salvar" />
           <Button
-            funcao={handleCancelClick}
+            onClick={handleCancelClick}
             nome="Cancelar"
             background="#b40000"
           />

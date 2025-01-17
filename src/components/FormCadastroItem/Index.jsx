@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Loading from "../Loading";
 import styles from "./FormCadastroItem.module.css";
 import { useItens } from "../../hooks/useItens";
-import Button from "../ComponentesPequenos/Button";
+import Button from "../ComponentesPequenos/Button/Index";
 import Input from "../ComponentesPequenos/Input";
 
 const FormCadastroItem = ({ categorias }) => {
@@ -68,7 +68,7 @@ const FormCadastroItem = ({ categorias }) => {
             label="Nome do Item"
             type="text"
             value={novoItem.nome}
-            funcao={handleInputChange}
+            onChange={handleInputChange}
             id="nome"
             name="nome"
             required
@@ -89,7 +89,7 @@ const FormCadastroItem = ({ categorias }) => {
           <Input
             label="Preço do Item"
             value={novoItem.preco}
-            funcao={handleInputChange}
+            onChange={handleInputChange}
             id="preco"
             name="preco"
             required
@@ -99,7 +99,7 @@ const FormCadastroItem = ({ categorias }) => {
           <Input
             label="Tipo Ou Tamanho"
             value={novoItem.tipo}
-            funcao={handleInputChange}
+            onChange={handleInputChange}
             id="tipo"
             name="tipo"
             required
@@ -109,7 +109,7 @@ const FormCadastroItem = ({ categorias }) => {
           <Input
             label="Descrição"
             value={novoItem.descricao}
-            funcao={handleInputChange}
+            onChange={handleInputChange}
             id="descricao"
             name="descricao"
             required
