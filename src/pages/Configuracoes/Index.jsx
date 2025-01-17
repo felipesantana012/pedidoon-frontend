@@ -10,24 +10,20 @@ const Configuracoes = () => {
       <h1>Configuracoes</h1>
 
       <div className={styles.container_content}>
-        <div className={styles.content_secundario}>
-          <div className={styles.content}>
-            <Perfil />
-          </div>
-
-          <div className={styles.content}>
-            <Endereco />
-          </div>
+        <div className={styles.content}>
+          <Perfil />
         </div>
 
-        <div className={styles.content_secundario}>
-          <div className={styles.content}>
-            <RedeSociais />
-          </div>
+        <div className={styles.content}>
+          <RedeSociais />
+        </div>
 
-          <div className={styles.content}>
-            <Login />
-          </div>
+        <div className={styles.content}>
+          <Login />
+        </div>
+
+        <div className={styles.content}>
+          <Endereco />
         </div>
       </div>
     </div>

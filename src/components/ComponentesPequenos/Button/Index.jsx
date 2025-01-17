@@ -9,7 +9,7 @@ const Button = (props) => {
         color: props.color || "white",
       }}
       type={props.type || "button"}
-      onClick={props.funcao || null}
+      onClick={props.onClick || null}
     >
       {props.nome}
     </button>

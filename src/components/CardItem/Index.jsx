@@ -4,7 +4,7 @@ import { BASE_URL } from "../../services/apiService";
 import styles from "./CardItem.module.css";
 import ModalEditarItem from "../ModalEditarItem/Index";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import Button from "../ComponentesPequenos/Button";
+import Button from "../ComponentesPequenos/Button/Index";
 
 const CardItem = ({
   item,
@@ -76,7 +76,11 @@ const CardItem = ({
         </div>
 
         <div className={styles.buttons}>
-          <Button background="#ffb223" funcao={handleEditClick} nome="Editar" />
+          <Button
+            background="#ffb223"
+            onClick={handleEditClick}
+            nome="Editar"
+          />
 
           <RiDeleteBin6Line
             className={styles.deletar}

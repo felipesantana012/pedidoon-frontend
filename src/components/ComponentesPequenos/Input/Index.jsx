@@ -6,7 +6,7 @@ const Input = (props) => {
       <label htmlFor={props.id}>{props.label}</label>
       <input
         type={props.type || "text"}
-        onChange={props.funcao || null}
+        onChange={props.onChange || null}
         value={props.value || ""}
         name={props.name || ""}
         id={props.id || ""}

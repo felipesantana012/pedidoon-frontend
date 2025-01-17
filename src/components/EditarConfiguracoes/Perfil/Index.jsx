@@ -80,10 +80,13 @@ const Perfil = () => {
               className={styles.img_logo}
             />
 
-            <Input
-              label="Imagem da Logo:"
+            <label htmlFor="img_logo" className={styles.label_img}>
+              Imagem Logo
+            </label>
+            <input
               type="file"
-              funcao={(e) => setNovaImgLogo(e.target.files[0])}
+              onChange={(e) => setNovaImgLogo(e.target.files[0])}
+              className={styles.input_img}
             />
           </div>
 
@@ -93,7 +96,7 @@ const Perfil = () => {
               type="text"
               name="nome_restaurante"
               value={perfil.nome_restaurante}
-              funcao={handleInputChange}
+              onChange={handleInputChange}
               required
             />
 
@@ -102,7 +105,7 @@ const Perfil = () => {
               type="text"
               name="nome_proprietario"
               value={perfil.nome_proprietario}
-              funcao={handleInputChange}
+              onChange={handleInputChange}
               required
             />
 
