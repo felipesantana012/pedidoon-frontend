@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Endereco.module.css";
 import { apiService, BASE_URL } from "../../../services/apiService";
-import Input from "../../ComponentesPequenos/Input";
+import Input from "../../ComponentesPequenos/Input/Index";
 import Button from "../../ComponentesPequenos/Button/Index";
 import Loading from "../../Loading/Index";
 import {
