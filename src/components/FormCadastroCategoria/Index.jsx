@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./FormCadastroCategoria.module.css";
-import Input from "../ComponentesPequenos/Input";
+import Input from "../ComponentesPequenos/Input/Index";
 import Button from "../ComponentesPequenos/Button/Index";
 
 const FormCadastroCategoria = ({ handleCreateCategoria }) => {

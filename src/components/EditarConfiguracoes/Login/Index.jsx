@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import styles from "./Login.module.css";
 import { apiService } from "../../../services/apiService";
-import Input from "../../ComponentesPequenos/Input";
-import Button from "../../ComponentesPequenos/Button";
+import Input from "../../ComponentesPequenos/Input/Index";
+import Button from "../../ComponentesPequenos/Button/Index";
 import {
   showAlertError,
   showAlertSuccess,
 } from "../../../services/alertService";
-import Loading from "../../Loading";
+import Loading from "../../Loading/Index";
 
 const Login = () => {
   const [email, setEmail] = useState("");

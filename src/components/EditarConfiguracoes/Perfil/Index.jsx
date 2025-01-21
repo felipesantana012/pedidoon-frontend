@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import styles from "./Perfil.module.css";
 import { apiService, BASE_URL } from "../../../services/apiService";
-import Loading from "../../Loading";
+import Loading from "../../Loading/Index";
 import {
   showAlertError,
   showAlertSuccess,
 } from "../../../services/alertService";
-import Input from "../../ComponentesPequenos/Input";
+import Input from "../../ComponentesPequenos/Input/Index";
 import Button from "../../ComponentesPequenos/Button/Index";
 
 const Perfil = () => {

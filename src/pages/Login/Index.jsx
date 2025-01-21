@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { apiService } from "../../services/apiService";
 import styles from "./Login.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Loading from "../../components/Loading";
+import Loading from "../../components/Loading/Index";
 
 const Login = () => {
   const [email, setEmail] = useState("");

@@ -1,5 +1,5 @@
 import { useCategorias } from "../../hooks/useCategorias";
-import Loading from "../../components/Loading";
+import Loading from "../../components/Loading/Index";
 import styles from "./Modificar_Cardapio.module.css";
 import Modificar_Categoria from "../../components/Modificar_Categoria/Index";
 import Modificar_Itens from "../../components/Modificar_Itens/Index";

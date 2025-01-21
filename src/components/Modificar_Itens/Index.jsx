@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useItens } from "../../hooks/useItens";
 import CardItem from "../CardItem/Index";
 import styles from "./Modificar_Itens.module.css";
-import Loading from "../Loading";
+import Loading from "../Loading/Index";
 
 const Modificar_Itens = ({ categoria_id }) => {
   const { itens, fetchItens, loading, handleDeleteItem, handleUpdateItem } =
