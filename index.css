@@ -2,5 +2,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lugrasimo&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 /* ESTILOS */
-@import url("./reset.module.css");
-@import url("./variaveis.module.css");
+@import url("./src/styles/reset.css");
+@import url("./src/styles/variaveis.css");
