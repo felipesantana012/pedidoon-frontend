@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Login from "../pages/Login";
-import Home from "../pages/Home";
-import NaoEncontrada from "../pages/NaoEncontrada";
-import PaginaBase from "../pages/PaginaBase";
+import Login from "../pages/Login/Index";
+import Home from "../pages/Home/Index";
+import NaoEncontrada from "../pages/NaoEncontrada/Index";
+import PaginaBase from "../pages/PaginaBase/Index";
 import ProtectedRoute from "../routes/ProtectedRoute";
 import Home_Cliente from "../pages/Home_Cliente/Index";
 import Cadastrar_Cardapio from "../pages/Cadastrar_Cardapio/Index";
