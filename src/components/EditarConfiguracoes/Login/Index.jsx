@@ -73,6 +73,7 @@ const Login = () => {
       <form className={styles.login}>
         <div className={styles.email}>
           <Input
+            id="email"
             label="Email de Acesso"
             name="email"
             value={email}
@@ -89,6 +90,7 @@ const Login = () => {
         </div>
         <div className={styles.senhas}>
           <Input
+            id="senha"
             label="Nova Senha"
             name="senha"
             type="password"
@@ -96,6 +98,7 @@ const Login = () => {
             onChange={(e) => setSenha(e.target.value)}
           />
           <Input
+            id="confirmarSenha"
             label="Confirmar Senha"
             name="confirmarSenha"
             type="password"
