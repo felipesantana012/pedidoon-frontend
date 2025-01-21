@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import Loading from "../Loading";
+import Loading from "../Loading/Index";
 import styles from "./FormCadastroItem.module.css";
 import { useItens } from "../../hooks/useItens";
 import Button from "../ComponentesPequenos/Button/Index";
-import Input from "../ComponentesPequenos/Input";
+import Input from "../ComponentesPequenos/Input/Index";
 
 const FormCadastroItem = ({ categorias }) => {
   const { handleCreateItem, loading } = useItens();

@@ -2,8 +2,8 @@ import { useState } from "react";
 import styles from "./RedeSociais.module.css";
 import { useEffect } from "react";
 import { apiService } from "../../../services/apiService";
-import Loading from ".././../Loading";
-import Input from "../../ComponentesPequenos/Input";
+import Loading from ".././../Loading/Index";
+import Input from "../../ComponentesPequenos/Input/Index";
 import Button from "../../ComponentesPequenos/Button/Index";
 import {
   showAlertError,

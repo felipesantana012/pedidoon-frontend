@@ -2,7 +2,7 @@ import styles from "./Cadastrar_Cardapio.module.css";
 import FormCadastroCategoria from "../../components/FormCadastroCategoria/Index";
 import FormCadastroItem from "../../components/FormCadastroItem/Index";
 import { useCategorias } from "../../hooks/useCategorias";
-import Loading from "../../components/Loading";
+import Loading from "../../components/Loading/Index";
 
 const Cadastrar_Cardapio = () => {
   const { handleCreateCategoria, categorias, loading } = useCategorias();

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { apiService } from "../../services/apiService";
 import styles from "./Promocao_Dia.module.css";
 import { useItens } from "../../hooks/useItens";
-import Loading from "../../components/Loading";
+import Loading from "../../components/Loading/Index";
 
 const Promocao_Dia = () => {
   const { itens, fetchAllItensDisponiveisRestaurante } = useItens();
