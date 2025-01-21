@@ -67,24 +67,28 @@ const RedeSociais = () => {
         {redeSociais && (
           <div className={styles.inputs}>
             <Input
+              id="tiktok"
               label="TikTok"
               name="tiktok"
               value={redeSociais.tiktok}
               onChange={handleInputChange}
             />
             <Input
+              id="facebook"
               label="Facebook"
               name="facebook"
               value={redeSociais.facebook}
               onChange={handleInputChange}
             />
             <Input
+              id="instagram"
               label="Instagram"
               name="instagram"
               value={redeSociais.instagram}
               onChange={handleInputChange}
             />
             <Input
+              id="whatsapp"
               label="WhatsApp"
               name="whatsapp"
               value={redeSociais.whatsapp}

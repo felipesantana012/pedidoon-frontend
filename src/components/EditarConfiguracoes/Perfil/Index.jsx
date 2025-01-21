@@ -92,6 +92,7 @@ const Perfil = () => {
 
           <div className={styles.info}>
             <Input
+              id="nome_restaurante"
               label="Nome Restaurante:"
               type="text"
               name="nome_restaurante"
@@ -101,6 +102,7 @@ const Perfil = () => {
             />
 
             <Input
+              id="nome_proprietario"
               label="Nome Proprietário:"
               type="text"
               name="nome_proprietario"

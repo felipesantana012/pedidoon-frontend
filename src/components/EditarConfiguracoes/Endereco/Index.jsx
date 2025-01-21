@@ -26,7 +26,6 @@ const Endereco = () => {
     try {
       const res = await apiService.get("/endereco");
       setEndereco(res);
-      console.log(res);
     } catch (error) {
       console.error("Erro ao buscar o Endereco:", error);
     } finally {
@@ -93,6 +92,7 @@ const Endereco = () => {
         <div className={styles.container_inputs}>
           <div className={styles.content_inputs}>
             <Input
+              id="rua"
               label="Rua"
               name="rua"
               value={endereco.rua}
@@ -100,6 +100,7 @@ const Endereco = () => {
               required
             />
             <Input
+              id="bairro"
               label="Bairro"
               name="bairro"
               value={endereco.bairro}
@@ -107,6 +108,7 @@ const Endereco = () => {
               required
             />
             <Input
+              id="cidade"
               label="Cidade"
               name="cidade"
               value={endereco.cidade}
@@ -114,6 +116,7 @@ const Endereco = () => {
               required
             />
             <Input
+              id="estado"
               label="Estado"
               name="estado"
               value={endereco.estado}
@@ -123,6 +126,7 @@ const Endereco = () => {
           </div>
 
           <Input
+            id="linkmaps"
             label="Link do Google Maps"
             name="linkmaps"
             value={endereco.linkmaps}
