@@ -10,7 +10,7 @@ export const useItens = () => {
     setLoading(true);
     try {
       const response = await apiService.get(`categorias/${categoria_id}/itens`);
-      setItens(response); // Atualiza os itens com os dados da API
+      setItens(response);
     } catch (error) {
       showAlertError("Erro ao carregar itens", error.message);
     } finally {
@@ -43,7 +43,7 @@ export const useItens = () => {
         formData
       );
 
-      setItens((prev) => [...prev, response]); // Adiciona o novo item ao estado
+      setItens((prev) => [...prev, response]);
       showAlertSuccess(`Item ${response.nome} cadastrado com sucesso!`);
     } catch (error) {
       showAlertError("Erro ao adicionar item", error.message);
@@ -56,7 +56,7 @@ export const useItens = () => {
     setLoading(true);
     try {
       await apiService.delete(`categorias/${categoria_id}/itens/${itemId}`);
-      setItens((prev) => prev.filter((item) => item.id !== itemId)); // Remove o item localmente
+      setItens((prev) => prev.filter((item) => item.id !== itemId));
       showAlertSuccess("Item deletado com sucesso!");
     } catch (error) {
       showAlertError("Erro ao deletar item", error.message);
@@ -78,8 +78,8 @@ export const useItens = () => {
         formData
       );
 
-      setItens(
-        (prev) => prev.map((item) => (item.id === itemId ? response : item)) // Atualiza o item alterado
+      setItens((prev) =>
+        prev.map((item) => (item.id === itemId ? response : item))
       );
       showAlertSuccess("Item atualizado com sucesso!");
     } catch (error) {
