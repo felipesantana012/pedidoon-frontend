@@ -1,6 +1,6 @@
 import Interruptor from "../ComponentesPequenos/Interruptor/Interruptor";
 import styles from "./ModalEditarItem.module.css";
-import Input from "../ComponentesPequenos/Input";
+import Input from "../ComponentesPequenos/Input/Index";
 import Button from "../ComponentesPequenos/Button/Index";
 
 const ModalEditarItem = ({
