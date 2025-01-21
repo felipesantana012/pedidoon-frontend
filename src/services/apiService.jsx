@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://pedidoonbackend.felipedev.app.br";
 
 const getHeaders = () => {
   const token = localStorage.getItem("token");
