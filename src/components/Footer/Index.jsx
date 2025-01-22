@@ -7,9 +7,7 @@ const Footer = () => {
   return (
     <footer className={styles.rodape}>
       {restaurante ? (
-        <Link
-          to={`/restaurante/${restaurante.nome_restaurante}/${restaurante.restaurante_id}`}
-        >
+        <Link to={`/restaurante/${restaurante.restaurante_id}`}>
           Site Cliente
         </Link>
       ) : (
