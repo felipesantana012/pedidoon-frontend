@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className={styles.rodape}>
       {restaurante ? (
         <Link
-          to={`/cliente/${restaurante.restaurante_id}/${restaurante.nome_restaurante}`}
+          to={`/restaurante/${restaurante.nome_restaurante}/${restaurante.restaurante_id}`}
         >
           Site Cliente
         </Link>

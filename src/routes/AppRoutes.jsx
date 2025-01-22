@@ -16,7 +16,7 @@ const AppRoutes = () => (
   <AuthProvider>
     <Routes>
       <Route
-        path="/cliente/:restaurante_id/:restaurante_nome"
+        path="/restaurante/:restaurante_nome/:restaurante_id"
         element={<Home_Cliente />}
       />
       <Route path="/" element={<Navigate to="/login" replace />} />
@@ -62,15 +62,8 @@ const AppRoutes = () => (
             </ProtectedRoute>
           }
         />
-        <Route
-          path="*"
-          element={
-            <ProtectedRoute>
-              <NaoEncontrada />
-            </ProtectedRoute>
-          }
-        />
       </Route>
+      <Route path="*" element={<NaoEncontrada />} />
     </Routes>
   </AuthProvider>
 );

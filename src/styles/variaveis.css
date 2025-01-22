@@ -20,4 +20,6 @@
   --transicao: all 0.2s ease-in-out;
   --transform-scale: scale(1.06);
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  --swiper-navigation-color: var(--cor-laranja-medio);
 }
