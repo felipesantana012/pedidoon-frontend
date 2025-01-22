@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "../pages/Login/Index";
 import Home from "../pages/Home/Index";
 import NaoEncontrada from "../pages/NaoEncontrada/Index";
@@ -15,7 +15,11 @@ import Configuracoes from "../pages/Configuracoes/Index";
 const AppRoutes = () => (
   <AuthProvider>
     <Routes>
-      <Route path="/" element={<Home_Cliente />} />
+      <Route
+        path="/cliente/:restaurante_id/:restaurante_nome"
+        element={<Home_Cliente />}
+      />
+      <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<Login />} />
       <Route element={<PaginaBase />}>
         <Route
