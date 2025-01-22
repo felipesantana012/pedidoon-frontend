@@ -8,11 +8,7 @@ const Categorias = ({ categorias }) => {
         {categorias &&
           categorias.map((categoria) => (
             <li key={categoria.id}>
-              <li>
-                <a class="" href={"#" + categoria.nome}>
-                  {categoria.nome}
-                </a>
-              </li>
+              <a href={"#" + categoria.nome}>{categoria.nome}</a>
             </li>
           ))}
       </ul>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { apiService } from "../services/apiService";
 import { showAlertError } from "../services/alertService";
 import { useNavigate } from "react-router-dom";
@@ -7,10 +7,8 @@ export const useDadosRestauranteCliente = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [itensImgNome, setItensImgNome] = useState([]);
-  const [dadosRestaurante, setDadosRestaurante] = useState({
-    categorias: [],
-    outras_config: {},
-  });
+  const [promocaoDia, setPromocaoDia] = useState({});
+  const [dadosRestaurante, setDadosRestaurante] = useState({});
 
   const getDadosRestaurante = async (restaurante_id) => {
     setLoading(true);
@@ -19,7 +17,6 @@ export const useDadosRestauranteCliente = () => {
         `/dados_restaurante_cliente/${restaurante_id}`
       );
       setDadosRestaurante(res);
-      console.log(res);
     } catch (error) {
       console.log(error);
       navigate("/nao-encontrada");
@@ -41,11 +38,32 @@ export const useDadosRestauranteCliente = () => {
     setItensImgNome(itensImgNome);
   };
 
+  const get_promocaoDia = () => {
+    if (dadosRestaurante?.promocao_dia?.itens) {
+      console.log(dadosRestaurante.promocao_dia.itens);
+      setPromocaoDia(dadosRestaurante.promocao_dia.itens);
+    } else {
+      console.error("Promoção do dia não encontrada nos dados do restaurante.");
+    }
+  };
+
+  useEffect(() => {
+    if (dadosRestaurante.categorias) {
+      get_itensImgNome();
+    }
+  }, [dadosRestaurante]);
+
+  useEffect(() => {
+    if (dadosRestaurante.promocao_dia) {
+      get_promocaoDia();
+    }
+  }, [dadosRestaurante]);
+
   return {
     loading,
     dadosRestaurante,
     getDadosRestaurante,
     itensImgNome,
-    get_itensImgNome,
+    promocaoDia,
   };
 };
