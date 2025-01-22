@@ -21,9 +21,8 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(false);
       setLoading(false);
       setRestaurante(null);
-      navigate("/login");
     }
-  }, [navigate]);
+  }, []);
 
   const buscarDadosRestaurante = async () => {
     try {
