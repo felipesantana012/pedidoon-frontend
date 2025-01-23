@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -7,9 +6,13 @@ const Footer = () => {
   return (
     <footer className={styles.rodape}>
       {restaurante ? (
-        <Link to={`/restaurante/${restaurante.restaurante_id}`}>
+        <a
+          href={`/restaurante/${restaurante.restaurante_id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Site Cliente
-        </Link>
+        </a>
       ) : (
         <p>Carregando informações do restaurante...</p>
       )}

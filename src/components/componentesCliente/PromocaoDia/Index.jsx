@@ -2,8 +2,8 @@ import { BASE_URL } from "../../../services/apiService";
 import styles from "./PromocaoDia.module.css";
 
 const PromocaoDia = ({ promocaoDia }) => {
-  if (!promocaoDia) {
-    return <p></p>;
+  if (!promocaoDia || !promocaoDia.nome) {
+    return null;
   }
 
   return (
