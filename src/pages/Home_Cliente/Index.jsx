@@ -9,6 +9,8 @@ import { useDadosRestauranteCliente } from "../../hooks/useDadosRestauranteClien
 import PromocaoDia from "../../components/componentesCliente/PromocaoDia/Index";
 import Cardapio from "../../components/componentesCliente/Cardapio/Index";
 import Localizacao from "../../components/componentesCliente/Localizacao/Index";
+import Footer from "../../components/componentesCliente/Footer/Index";
+import BotaoTopo from "../../components/ComponentesPequenos/BotaoTopo/Index";
 
 const Home_Cliente = () => {
   const { restaurante_id } = useParams();
@@ -52,6 +54,12 @@ const Home_Cliente = () => {
           rede_sociais={dadosRestaurante.rede_sociais}
         />
       )}
+      {dadosRestaurante.outras_config && (
+        <Footer
+          nome_restaurante={dadosRestaurante.outras_config.nome_restaurante}
+        />
+      )}
+      <BotaoTopo />
     </div>
   );
 };

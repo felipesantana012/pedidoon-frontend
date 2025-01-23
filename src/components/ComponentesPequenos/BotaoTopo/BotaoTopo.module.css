@@ -1,0 +1,21 @@
+/* BotaoTopo.module.css */
+.botaoTopo {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  background-color: var(--cor-laranja-claro);
+  color: var(--cor-branca);
+  border: none;
+  border-radius: 50%;
+  padding: 0 0.7rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: var(--box-shadow-cliente);
+  transition: var(--transicao);
+  z-index: 1000;
+}
+
+.botaoTopo:hover {
+  transform: var(--transform-scale);
+  filter: brightness(0.9);
+}

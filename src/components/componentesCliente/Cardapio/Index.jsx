@@ -8,8 +8,12 @@ const Cardapio = ({ categorias }) => {
       <h2>Cardapio</h2>
       {categorias ? (
         categorias.map((categoria) => (
-          <div key={categoria.id} className={styles.container_categoria}>
-            <h2 id={categoria.nome}>{categoria.nome}</h2>
+          <div
+            key={categoria.id}
+            id={categoria.nome}
+            className={styles.container_categoria}
+          >
+            <h2>{categoria.nome}</h2>
 
             <div className={styles.container_itens}>
               {categoria.itens &&

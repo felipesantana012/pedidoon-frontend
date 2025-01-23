@@ -36,6 +36,7 @@
 }
 
 .categorias a {
+  cursor: pointer;
   text-decoration: none;
   color: var(--cor-laranja-claro);
   filter: brightness(0.8);
