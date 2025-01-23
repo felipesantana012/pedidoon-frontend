@@ -11,6 +11,7 @@ import Cardapio from "../../components/componentesCliente/Cardapio/Index";
 import Localizacao from "../../components/componentesCliente/Localizacao/Index";
 import Footer from "../../components/componentesCliente/Footer/Index";
 import BotaoTopo from "../../components/ComponentesPequenos/BotaoTopo/Index";
+import Carrinho from "../../components/componentesCliente/Carrinho/Index";
 
 const Home_Cliente = () => {
   const { restaurante_id } = useParams();
@@ -59,6 +60,7 @@ const Home_Cliente = () => {
           nome_restaurante={dadosRestaurante.outras_config.nome_restaurante}
         />
       )}
+      <Carrinho />
       <BotaoTopo />
     </div>
   );
