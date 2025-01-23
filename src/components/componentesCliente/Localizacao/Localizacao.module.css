@@ -1,0 +1,144 @@
+.localizacaoContato {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cor-branca);
+  gap: 0.5rem;
+  margin: 2% 4%;
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow-cliente);
+}
+
+.localizacaoTituloLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.localizacaoTitulo {
+  margin-top: 1rem;
+}
+
+.localizacaoImg {
+  width: 3rem;
+}
+
+.localizacao {
+  display: flex;
+  gap: 4rem;
+  margin: 1rem;
+}
+
+.localizacaoGoogle {
+  width: 50%;
+}
+
+.localizacaoMaps {
+  box-shadow: var(--box-shadow-cliente);
+  border-radius: 1rem;
+  width: 100%;
+  height: 37rem;
+}
+
+.contato {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.contatoImgImagem {
+  height: 20rem;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow-cliente);
+}
+
+.contatoDescricao {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contatoDescricaoEndereco {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contatoDescricaoEndereco h2 {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.contatoDescricaoEndereco p {
+  text-align: left;
+}
+
+.contatoDescricaoEntrarContato {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+}
+.contatoDescricaoEntrarContato h2 {
+  font-size: 1.3rem;
+  white-space: nowrap;
+}
+
+.contatoDescricaoLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.contatoImagemImg {
+  width: 2rem;
+  transition: var(--transicao);
+}
+
+.contatoImagemImg:hover {
+  transform: var(--transform-scale);
+}
+
+@media screen and (max-width: 830px) {
+  .localizacao {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .localizacaoGoogle {
+    text-align: center;
+    width: 100%;
+  }
+
+  .localizacaoGoogle iframe {
+    width: 95%;
+    height: 300px;
+  }
+
+  .contato {
+    flex-direction: row;
+    padding: 1rem;
+    gap: 1rem;
+    width: 95%;
+  }
+
+  .contatoDescricao {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .contato {
+    flex-direction: column;
+  }
+
+  .localizacao {
+    align-items: center;
+  }
+
+  .localizacaoContato {
+    gap: 0;
+  }
+}

@@ -1,12 +1,22 @@
 import { Link } from "react-router-dom"; // Importe o Link do React Router
 import styles from "./Header.module.css";
 import { BASE_URL } from "../../../services/apiService";
+import { useEffect } from "react";
 
 const Header = ({ nome_restaurante, img_logo }) => {
   const reloadPagina = (e) => {
     e.preventDefault();
     window.location.reload();
   };
+
+  useEffect(() => {
+    if (nome_restaurante) {
+      document.title = nome_restaurante;
+    }
+    if (img_logo) {
+      document.getElementById("dynamic-favicon").href = BASE_URL + img_logo;
+    }
+  }, [nome_restaurante, img_logo]);
 
   return (
     <div className={styles.cabecalho}>

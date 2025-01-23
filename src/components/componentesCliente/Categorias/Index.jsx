@@ -1,4 +1,5 @@
 import styles from "./Categorias.module.css";
+import { Link } from "react-scroll";
 
 const Categorias = ({ categorias }) => {
   return (
@@ -8,7 +9,9 @@ const Categorias = ({ categorias }) => {
         {categorias &&
           categorias.map((categoria) => (
             <li key={categoria.id}>
-              <a href={"#" + categoria.nome}>{categoria.nome}</a>
+              <Link to={categoria.nome} smooth={true} duration={500}>
+                {categoria.nome}
+              </Link>
             </li>
           ))}
       </ul>

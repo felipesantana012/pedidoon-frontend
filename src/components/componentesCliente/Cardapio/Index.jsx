@@ -1,13 +1,19 @@
 import styles from "./Cardapio.module.css";
 import { BASE_URL } from "../../../services/apiService";
+import Loading from "../../Loading/Index";
 
 const Cardapio = ({ categorias }) => {
   return (
     <div className={styles.cardapio}>
+      <h2>Cardapio</h2>
       {categorias ? (
         categorias.map((categoria) => (
-          <div key={categoria.id} className={styles.container_categoria}>
-            <h2 id={categoria.nome}>{categoria.nome}</h2>
+          <div
+            key={categoria.id}
+            id={categoria.nome}
+            className={styles.container_categoria}
+          >
+            <h2>{categoria.nome}</h2>
 
             <div className={styles.container_itens}>
               {categoria.itens &&
@@ -43,7 +49,7 @@ const Cardapio = ({ categorias }) => {
           </div>
         ))
       ) : (
-        <p>Carregando...</p>
+        <Loading />
       )}
     </div>
   );
