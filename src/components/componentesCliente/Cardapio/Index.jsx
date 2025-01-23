@@ -5,6 +5,7 @@ import Loading from "../../Loading/Index";
 const Cardapio = ({ categorias }) => {
   return (
     <div className={styles.cardapio}>
+      <h2>Cardapio</h2>
       {categorias ? (
         categorias.map((categoria) => (
           <div key={categoria.id} className={styles.container_categoria}>

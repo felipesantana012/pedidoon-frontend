@@ -5,11 +5,11 @@ import img_instagram from "../../../assets/logos-icone/icone-instagram01.png";
 import img_facebook from "../../../assets/logos-icone/icone-facebook01.png";
 import img_tiktok from "../../../assets/logos-icone/icone-tiktok01.png";
 import img_whatsapp from "../../../assets/logos-icone/icone-whatsapp01.png";
-import img_localizacao from "../../../assets/logos-icone/icone-localizacao.png";
+import img_localizacao from "../../../assets/logos-icone/localizacao.png";
 
 const Localizacao = ({ endereco, rede_sociais }) => {
   return (
-    <section className={styles.localizacaoContato}>
+    <div className={styles.localizacaoContato}>
       <div className={styles.localizacaoTituloLogo}>
         <h2 className={styles.localizacaoTitulo}>Nossa Localização</h2>
         <img
@@ -22,7 +22,7 @@ const Localizacao = ({ endereco, rede_sociais }) => {
       <div className={styles.localizacao}>
         <div className={styles.localizacaoGoogle}>
           <iframe
-            src={endereco && endereco.linkmaps}
+            src={endereco.linkmaps}
             title="Mapa de Localização"
             className={styles.localizacaoMaps}
           ></iframe>
@@ -31,27 +31,36 @@ const Localizacao = ({ endereco, rede_sociais }) => {
         <div className={styles.contato}>
           <div className={styles.contatoImg}>
             <img
-              src={endereco && BASE_URL + endereco.img_restaurante}
+              src={BASE_URL + endereco.img_restaurante}
               alt="Foto da frente do restaurante"
               className={styles.contatoImgImagem}
             />
           </div>
 
           <div className={styles.contatoDescricao}>
-            {endereco && (
+            {
               <div className={styles.contatoDescricaoEndereco}>
                 <h2>Nosso Endereço</h2>
-                <p>Rua: {endereco.rua}</p>
-                <p>Bairro: {endereco.bairro}</p>
-                <p>Cidade: {endereco.cidade}</p>
-                <p>Estado: {endereco.estado}</p>
+                <p>
+                  <strong>Rua:</strong> {endereco.rua}
+                </p>
+                <p>
+                  <strong>Bairro: </strong>
+                  {endereco.bairro}
+                </p>
+                <p>
+                  <strong>Cidade:</strong> {endereco.cidade}
+                </p>
+                <p>
+                  <strong>Estado:</strong> {endereco.estado}
+                </p>
               </div>
-            )}
+            }
 
             <div className={styles.contatoDescricaoEntrarContato}>
-              <h2>Entre em contato conosco</h2>
+              <h2>Entre em contato</h2>
               <ul className={styles.contatoDescricaoLinks}>
-                {rede_sociais && (
+                {
                   <li>
                     <a
                       href={`https://wa.me/${rede_sociais.whatsapp}`}
@@ -65,8 +74,8 @@ const Localizacao = ({ endereco, rede_sociais }) => {
                       />
                     </a>
                   </li>
-                )}
-                {rede_sociais && (
+                }
+                {
                   <li>
                     <a
                       href={`https://www.instagram.com/${rede_sociais.instagram}`}
@@ -80,8 +89,8 @@ const Localizacao = ({ endereco, rede_sociais }) => {
                       />
                     </a>
                   </li>
-                )}
-                {rede_sociais && (
+                }
+                {
                   <li>
                     <a
                       href={`https://www.facebook.com/${rede_sociais.facebook}`}
@@ -95,8 +104,8 @@ const Localizacao = ({ endereco, rede_sociais }) => {
                       />
                     </a>
                   </li>
-                )}
-                {rede_sociais && (
+                }
+                {
                   <li>
                     <a
                       href={`https://www.tiktok.com/${rede_sociais.tiktok}`}
@@ -110,13 +119,13 @@ const Localizacao = ({ endereco, rede_sociais }) => {
                       />
                     </a>
                   </li>
-                )}
+                }
               </ul>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

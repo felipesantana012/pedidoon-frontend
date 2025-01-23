@@ -40,7 +40,6 @@ export const useDadosRestauranteCliente = () => {
 
   const get_promocaoDia = () => {
     if (dadosRestaurante?.promocao_dia?.itens) {
-      console.log(dadosRestaurante.promocao_dia.itens);
       setPromocaoDia(dadosRestaurante.promocao_dia.itens);
     } else {
       console.error("Promoção do dia não encontrada nos dados do restaurante.");

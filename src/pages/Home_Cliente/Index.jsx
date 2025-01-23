@@ -33,16 +33,25 @@ const Home_Cliente = () => {
           img_logo={dadosRestaurante.outras_config.img_logo}
         />
       )}
-      <Slides itens={itensImgNome} />
+
+      {itensImgNome && <Slides itens={itensImgNome} />}
+
       <div className={styles.content}>
-        <Categorias categorias={dadosRestaurante.categorias} />
-        <PromocaoDia promocaoDia={promocaoDia} />
+        {dadosRestaurante.categorias && (
+          <Categorias categorias={dadosRestaurante.categorias} />
+        )}
+        {promocaoDia && <PromocaoDia promocaoDia={promocaoDia} />}
       </div>
-      <Cardapio categorias={dadosRestaurante.categorias} />
-      <Localizacao
-        endereco={dadosRestaurante.endereco}
-        rede_sociais={dadosRestaurante.rede_sociais}
-      />
+      {dadosRestaurante.categorias && (
+        <Cardapio categorias={dadosRestaurante.categorias} />
+      )}
+
+      {dadosRestaurante.endereco && (
+        <Localizacao
+          endereco={dadosRestaurante.endereco}
+          rede_sociais={dadosRestaurante.rede_sociais}
+        />
+      )}
     </div>
   );
 };
