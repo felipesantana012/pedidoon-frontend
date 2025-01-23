@@ -1,5 +1,6 @@
 import styles from "./Cardapio.module.css";
 import { BASE_URL } from "../../../services/apiService";
+import Loading from "../../Loading/Index";
 
 const Cardapio = ({ categorias }) => {
   return (
@@ -43,7 +44,7 @@ const Cardapio = ({ categorias }) => {
           </div>
         ))
       ) : (
-        <p>Carregando...</p>
+        <Loading />
       )}
     </div>
   );

@@ -8,6 +8,7 @@ import Categorias from "../../components/componentesCliente/Categorias/Index";
 import { useDadosRestauranteCliente } from "../../hooks/useDadosRestauranteCliente";
 import PromocaoDia from "../../components/componentesCliente/PromocaoDia/Index";
 import Cardapio from "../../components/componentesCliente/Cardapio/Index";
+import Localizacao from "../../components/componentesCliente/Localizacao/Index";
 
 const Home_Cliente = () => {
   const { restaurante_id } = useParams();
@@ -38,6 +39,10 @@ const Home_Cliente = () => {
         <PromocaoDia promocaoDia={promocaoDia} />
       </div>
       <Cardapio categorias={dadosRestaurante.categorias} />
+      <Localizacao
+        endereco={dadosRestaurante.endereco}
+        rede_sociais={dadosRestaurante.rede_sociais}
+      />
     </div>
   );
 };
