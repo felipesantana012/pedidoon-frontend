@@ -1,60 +1,27 @@
 import styles from "./Home_Cliente.module.css";
 import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { apiService } from "../../services/apiService";
+import { useParams } from "react-router-dom";
 import Loading from "../../components/Loading/Index";
 import Header from "../../components/componentesCliente/Header/Index";
 import Slides from "../../components/componentesCliente/Slides/Index";
-import { showAlertError } from "../../services/alertService";
+import Categorias from "../../components/componentesCliente/Categorias/Index";
+import { useDadosRestauranteCliente } from "../../hooks/useDadosRestauranteCliente";
+import PromocaoDia from "../../components/componentesCliente/PromocaoDia/Index";
+import Cardapio from "../../components/componentesCliente/Cardapio/Index";
 
 const Home_Cliente = () => {
   const { restaurante_id } = useParams();
-  const navigate = useNavigate();
-  const [dadosRestaurante, setDadosRestaurante] = useState({
-    categorias: [],
-    outras_config: {},
-  });
-  const [loading, setLoading] = useState(false);
-  const [itensImgNome, setItensImgNome] = useState([]);
-
-  const get_itensImgNome = () => {
-    const itensImgNome = [];
-    dadosRestaurante.categorias.forEach((categoria) => {
-      if (categoria.itens) {
-        categoria.itens.forEach((item) => {
-          itensImgNome.push({ img: item.img, nome: item.nome });
-        });
-      }
-    });
-    setItensImgNome(itensImgNome);
-  };
-
-  const getDadosRestaurante = async () => {
-    setLoading(true);
-    try {
-      const res = await apiService.get(
-        `/dados_restaurante_cliente/${restaurante_id}`
-      );
-      setDadosRestaurante(res);
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-      navigate("/nao-encontrada");
-      showAlertError("Erro ao buscar dados do restaurante");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const {
+    getDadosRestaurante,
+    dadosRestaurante,
+    itensImgNome,
+    loading,
+    promocaoDia,
+  } = useDadosRestauranteCliente();
 
   useEffect(() => {
-    getDadosRestaurante();
+    getDadosRestaurante(restaurante_id);
   }, [restaurante_id]);
-
-  useEffect(() => {
-    if (dadosRestaurante.categorias) {
-      get_itensImgNome();
-    }
-  }, [dadosRestaurante]);
 
   return (
     <div className={styles.container}>
@@ -66,7 +33,11 @@ const Home_Cliente = () => {
         />
       )}
       <Slides itens={itensImgNome} />
-      Home_Cliente {restaurante_id}
+      <div className={styles.content}>
+        <Categorias categorias={dadosRestaurante.categorias} />
+        <PromocaoDia promocaoDia={promocaoDia} />
+      </div>
+      <Cardapio categorias={dadosRestaurante.categorias} />
     </div>
   );
 };

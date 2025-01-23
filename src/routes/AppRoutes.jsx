@@ -15,10 +15,7 @@ import Configuracoes from "../pages/Configuracoes/Index";
 const AppRoutes = () => (
   <AuthProvider>
     <Routes>
-      <Route
-        path="/restaurante/:restaurante_nome/:restaurante_id"
-        element={<Home_Cliente />}
-      />
+      <Route path="/restaurante/:restaurante_id" element={<Home_Cliente />} />
       <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<Login />} />
       <Route element={<PaginaBase />}>
