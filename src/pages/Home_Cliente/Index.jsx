@@ -12,6 +12,7 @@ import Localizacao from "../../components/componentesCliente/Localizacao/Index";
 import Footer from "../../components/componentesCliente/Footer/Index";
 import BotaoTopo from "../../components/ComponentesPequenos/BotaoTopo/Index";
 import Carrinho from "../../components/componentesCliente/Carrinho/Index";
+import { CarrinhoProvider } from "../../contexts/CarrinhoContext";
 
 const Home_Cliente = () => {
   const { restaurante_id } = useParams();
@@ -28,41 +29,43 @@ const Home_Cliente = () => {
   }, [restaurante_id]);
 
   return (
-    <div className={styles.container}>
-      {loading && <Loading />}
-      {dadosRestaurante.outras_config && (
-        <Header
-          nome_restaurante={dadosRestaurante.outras_config.nome_restaurante}
-          img_logo={dadosRestaurante.outras_config.img_logo}
-        />
-      )}
-
-      {itensImgNome && <Slides itens={itensImgNome} />}
-
-      <div className={styles.content}>
-        {dadosRestaurante.categorias && (
-          <Categorias categorias={dadosRestaurante.categorias} />
+    <CarrinhoProvider>
+      <div className={styles.container}>
+        {loading && <Loading />}
+        {dadosRestaurante.outras_config && (
+          <Header
+            nome_restaurante={dadosRestaurante.outras_config.nome_restaurante}
+            img_logo={dadosRestaurante.outras_config.img_logo}
+          />
         )}
-        {promocaoDia && <PromocaoDia promocaoDia={promocaoDia} />}
-      </div>
-      {dadosRestaurante.categorias && (
-        <Cardapio categorias={dadosRestaurante.categorias} />
-      )}
 
-      {dadosRestaurante.endereco && (
-        <Localizacao
-          endereco={dadosRestaurante.endereco}
-          rede_sociais={dadosRestaurante.rede_sociais}
-        />
-      )}
-      {dadosRestaurante.outras_config && (
-        <Footer
-          nome_restaurante={dadosRestaurante.outras_config.nome_restaurante}
-        />
-      )}
-      <Carrinho />
-      <BotaoTopo />
-    </div>
+        {itensImgNome && <Slides itens={itensImgNome} />}
+
+        <div className={styles.content}>
+          {dadosRestaurante.categorias && (
+            <Categorias categorias={dadosRestaurante.categorias} />
+          )}
+          {promocaoDia && <PromocaoDia promocaoDia={promocaoDia} />}
+        </div>
+        {dadosRestaurante.categorias && (
+          <Cardapio categorias={dadosRestaurante.categorias} />
+        )}
+
+        {dadosRestaurante.endereco && (
+          <Localizacao
+            endereco={dadosRestaurante.endereco}
+            rede_sociais={dadosRestaurante.rede_sociais}
+          />
+        )}
+        {dadosRestaurante.outras_config && (
+          <Footer
+            nome_restaurante={dadosRestaurante.outras_config.nome_restaurante}
+          />
+        )}
+        <Carrinho />
+        <BotaoTopo />
+      </div>
+    </CarrinhoProvider>
   );
 };
 
