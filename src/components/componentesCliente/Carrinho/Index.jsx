@@ -5,7 +5,7 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { useState } from "react";
 import { useCarrinho } from "../../../contexts/CarrinhoContext";
 
-const Carrinho = () => {
+const Carrinho = ({ rede_sociais }) => {
   const { itensCarrinho, removerDoCarrinho } = useCarrinho();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,7 +33,7 @@ const Carrinho = () => {
 
   const finalizarPedido = () => {
     if (!itensCarrinho.length) return;
-    const numeroWhatsApp = "5581984910097";
+    const numeroWhatsApp = rede_sociais.whatsapp;
     const mensagem = encodeURIComponent(gerarMensagemWhatsApp());
     const linkWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagem}`;
     window.open(linkWhatsApp, "_blank");
