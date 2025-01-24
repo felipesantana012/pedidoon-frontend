@@ -32,6 +32,7 @@ const Carrinho = () => {
   };
 
   const finalizarPedido = () => {
+    if (!itensCarrinho.length) return;
     const numeroWhatsApp = "5581984910097";
     const mensagem = encodeURIComponent(gerarMensagemWhatsApp());
     const linkWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagem}`;
@@ -42,6 +43,11 @@ const Carrinho = () => {
     <div>
       {!isModalOpen && (
         <button className={styles.carrinho_icone} onClick={toggleModal}>
+          {itensCarrinho.length > 0 ? (
+            <span className={styles.carrinho_quantidade}>
+              {itensCarrinho.length}
+            </span>
+          ) : null}
           <img src={img_carrinho} alt="imagem do carrinho" />
         </button>
       )}

@@ -21,6 +21,16 @@
   height: 100%;
 }
 
+.carrinho_quantidade {
+  padding: 0 0.4rem;
+  border-radius: 50%;
+  position: absolute;
+  top: -0.7rem;
+  right: -0.4rem;
+  background-color: var(--cor-verde);
+  color: var(--cor-branca);
+}
+
 /* Modal carrinho */
 .carrinho_pedidos {
   padding: 0.5rem;
