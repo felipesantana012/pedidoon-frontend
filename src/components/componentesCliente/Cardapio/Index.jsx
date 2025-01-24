@@ -30,7 +30,7 @@ const Cardapio = ({ categorias }) => {
   };
 
   return (
-    <div className={styles.cardapio}>
+    <div className={styles.cardapio} id="cardapio">
       <h2>Cardápio</h2>
       {categorias ? (
         categorias.map((categoria) => (

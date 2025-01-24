@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"; // Importe o Link do React Router
+import { Link } from "react-scroll";
 import styles from "./Header.module.css";
 import { BASE_URL } from "../../../services/apiService";
 import { useEffect } from "react";
@@ -36,11 +36,15 @@ const Header = ({ nome_restaurante, img_logo }) => {
         </li>
 
         <li>
-          <Link to="#cardapio">Cardápio</Link>
+          <Link to="cardapio" smooth={true} duration={500}>
+            Cardápio
+          </Link>
         </li>
 
         <li>
-          <Link to="#contato">Contato</Link>
+          <Link to="contato" smooth={true} duration={500}>
+            Contato
+          </Link>
         </li>
       </ul>
     </div>

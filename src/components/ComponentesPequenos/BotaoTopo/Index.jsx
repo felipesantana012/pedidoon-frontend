@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import styles from "./BotaoTopo.module.css";
+import { FaArrowUp } from "react-icons/fa";
 
 const BotaoTopo = () => {
   const [mostrarBotao, setMostrarBotao] = useState(false);
@@ -29,7 +30,7 @@ const BotaoTopo = () => {
     <>
       {mostrarBotao && (
         <button onClick={voltarAoTopo} className={styles.botaoTopo}>
-          ⬆
+          <FaArrowUp />
         </button>
       )}
     </>
