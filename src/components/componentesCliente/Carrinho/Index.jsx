@@ -3,27 +3,51 @@ import img_carrinho from "../../../assets/icone-carrinho.png";
 import { IoClose } from "react-icons/io5";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useState } from "react";
+import { useCarrinho } from "../../../contexts/CarrinhoContext";
 
 const Carrinho = () => {
-  const [itensCarrinho, setItensCarrinho] = useState([
-    { id: 1, quantidade: 2, titulo: "Pizza de 4 queijos", valor: "59,90" },
-    {
-      id: 2,
-      quantidade: 1,
-      titulo: "Hambúrguer duplo Hambúrguer",
-      valor: "29,90",
-    },
-    { id: 3, quantidade: 4, titulo: "Hambúrguer", valor: "29,90" },
-  ]);
-
+  const { itensCarrinho, removerDoCarrinho } = useCarrinho();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => setIsModalOpen((prev) => !prev);
+
+  const calcularTotal = () => {
+    return itensCarrinho
+      .reduce((total, item) => total + item.preco * item.quantidade, 0)
+      .toFixed(2);
+  };
+
+  const gerarMensagemWhatsApp = () => {
+    const total = calcularTotal();
+    const itensMensagem = itensCarrinho
+      .map(
+        (item) =>
+          `*${item.quantidade}x ${item.nome}* - R$ ${(
+            item.preco * item.quantidade
+          ).toFixed(2)}`
+      )
+      .join("\n");
+
+    return `Olá, gostaria de finalizar o pedido:\n\n${itensMensagem}\n\n*Total a pagar: R$ ${total}*`;
+  };
+
+  const finalizarPedido = () => {
+    if (!itensCarrinho.length) return;
+    const numeroWhatsApp = "5581984910097";
+    const mensagem = encodeURIComponent(gerarMensagemWhatsApp());
+    const linkWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagem}`;
+    window.open(linkWhatsApp, "_blank");
+  };
 
   return (
     <div>
       {!isModalOpen && (
         <button className={styles.carrinho_icone} onClick={toggleModal}>
+          {itensCarrinho.length > 0 ? (
+            <span className={styles.carrinho_quantidade}>
+              {itensCarrinho.length}
+            </span>
+          ) : null}
           <img src={img_carrinho} alt="imagem do carrinho" />
         </button>
       )}
@@ -42,36 +66,26 @@ const Carrinho = () => {
                   <p className={styles.carrinho__item_quantidade}>
                     {item.quantidade} <span>x</span>
                   </p>
-                  <p className={styles.carrinho__item_titulo}>{item.titulo}</p>
+                  <p className={styles.carrinho__item_titulo}>{item.nome}</p>
                   <p className={styles.carrinho__item_valor}>
-                    {item.valor}
-                    <span>R$</span>
+                    R$ {(item.preco * item.quantidade).toFixed(2)}
                   </p>
                   <RiDeleteBin5Line
                     className={styles.carrinho__item_deletar}
-                    onClick={() =>
-                      setItensCarrinho((prev) =>
-                        prev.filter(
-                          (carrinhoItem) => carrinhoItem.id !== item.id
-                        )
-                      )
-                    }
+                    onClick={() => removerDoCarrinho(item.id)}
                   />
                 </li>
               ))}
             </ul>
 
             <h3 className={styles.carrinho__valor_total}>
-              Total a Pagar:{" "}
-              <span>
-                {itensCarrinho
-                  .reduce((total, item) => total + parseFloat(item.valor), 0)
-                  .toFixed(2)}{" "}
-                R$
-              </span>
+              Total a Pagar: <span>R$ {calcularTotal()}</span>
             </h3>
             <div className={styles.carrinho__btns}>
-              <button className={styles.carrinho__btn_finalizar}>
+              <button
+                className={styles.carrinho__btn_finalizar}
+                onClick={finalizarPedido}
+              >
                 Finalizar Pedido
               </button>
             </div>

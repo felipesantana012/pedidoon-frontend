@@ -169,14 +169,11 @@
   transform: var(--transform-scale);
 }
 
-/* Mensagem de Erro */
 .mensagemErro {
-  display: none;
-  font-size: 1rem;
-  color: brown;
+  font-size: 0.8rem;
+  color: var(--cor-vermelha);
 }
 
-/* Responsividade */
 @media screen and (max-width: 536px) {
   .container_itens {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
