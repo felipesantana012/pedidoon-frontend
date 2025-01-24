@@ -9,7 +9,7 @@ import img_localizacao from "../../../assets/logos-icone/localizacao.png";
 
 const Localizacao = ({ endereco, rede_sociais }) => {
   return (
-    <div className={styles.localizacaoContato}>
+    <div className={styles.localizacaoContato} id="contato">
       <div className={styles.localizacaoTituloLogo}>
         <h2 className={styles.localizacaoTitulo}>Nossa Localização</h2>
         <img

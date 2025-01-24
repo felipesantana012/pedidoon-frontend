@@ -41,6 +41,7 @@
 
 .cabecalho_menu a:hover {
   color: var(--cor-amarela-medio);
+  cursor: pointer;
 }
 
 .cabecalho_menu li {

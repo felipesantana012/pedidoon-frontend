@@ -126,6 +126,7 @@
 .botao_adicionar {
   cursor: pointer;
   background-color: var(--cor-amarela-claro);
+  color: var(--cor-preta);
   border: none;
   border-radius: 1rem;
   padding: 0.4rem;
