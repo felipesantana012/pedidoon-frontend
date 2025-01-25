@@ -23,12 +23,16 @@ export const CarrinhoProvider = ({ children }) => {
     }
   };
 
-  const removerDoCarrinho = (itemId) => {
-    setItensCarrinho((prev) => prev.filter((item) => item.id !== itemId));
+  const calcularTotal = () => {
+    const valorTotal = itensCarrinho
+      .reduce((total, item) => total + item.preco * item.quantidade, 0)
+      .toFixed(2);
+
+    return parseFloat(valorTotal);
   };
 
-  const limparCarrinho = () => {
-    setItensCarrinho([]);
+  const removerDoCarrinho = (itemId) => {
+    setItensCarrinho((prev) => prev.filter((item) => item.id !== itemId));
   };
 
   return (
@@ -37,7 +41,7 @@ export const CarrinhoProvider = ({ children }) => {
         itensCarrinho,
         adicionarAoCarrinho,
         removerDoCarrinho,
-        limparCarrinho,
+        calcularTotal,
       }}
     >
       {children}
