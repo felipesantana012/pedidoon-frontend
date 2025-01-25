@@ -4,40 +4,16 @@ import { IoClose } from "react-icons/io5";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useState } from "react";
 import { useCarrinho } from "../../../contexts/CarrinhoContext";
+import FinalizarPedido from "../FinalizarPedido/Index";
 
-const Carrinho = ({ rede_sociais }) => {
-  const { itensCarrinho, removerDoCarrinho } = useCarrinho();
+const Carrinho = ({ whatsApp }) => {
+  const { itensCarrinho, removerDoCarrinho, calcularTotal } = useCarrinho();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFinalizarPedidoOpen, setIsFinalizarPedidoOpen] = useState(false);
 
   const toggleModal = () => setIsModalOpen((prev) => !prev);
-
-  const calcularTotal = () => {
-    return itensCarrinho
-      .reduce((total, item) => total + item.preco * item.quantidade, 0)
-      .toFixed(2);
-  };
-
-  const gerarMensagemWhatsApp = () => {
-    const total = calcularTotal();
-    const itensMensagem = itensCarrinho
-      .map(
-        (item) =>
-          `*${item.quantidade}x ${item.nome}* - R$ ${(
-            item.preco * item.quantidade
-          ).toFixed(2)}`
-      )
-      .join("\n");
-
-    return `Olá, gostaria de finalizar o pedido:\n\n${itensMensagem}\n\n*Total a pagar: R$ ${total}*`;
-  };
-
-  const finalizarPedido = () => {
-    if (!itensCarrinho.length) return;
-    const numeroWhatsApp = rede_sociais.whatsapp;
-    const mensagem = encodeURIComponent(gerarMensagemWhatsApp());
-    const linkWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagem}`;
-    window.open(linkWhatsApp, "_blank");
-  };
+  const abrirFinalizarPedido = () => setIsFinalizarPedidoOpen(true);
+  const fecharFinalizarPedido = () => setIsFinalizarPedidoOpen(false);
 
   return (
     <div>
@@ -68,7 +44,7 @@ const Carrinho = ({ rede_sociais }) => {
                   </p>
                   <p className={styles.carrinho__item_titulo}>{item.nome}</p>
                   <p className={styles.carrinho__item_valor}>
-                    R$ {(item.preco * item.quantidade).toFixed(2)}
+                    Total: R$ {(item.preco * item.quantidade).toFixed(2)}
                   </p>
                   <RiDeleteBin5Line
                     className={styles.carrinho__item_deletar}
@@ -79,18 +55,21 @@ const Carrinho = ({ rede_sociais }) => {
             </ul>
 
             <h3 className={styles.carrinho__valor_total}>
-              Total a Pagar: <span>R$ {calcularTotal()}</span>
+              Total a Pagar: <span>R$ {calcularTotal().toFixed(2)}</span>
             </h3>
             <div className={styles.carrinho__btns}>
               <button
                 className={styles.carrinho__btn_finalizar}
-                onClick={finalizarPedido}
+                onClick={itensCarrinho.length > 0 ? abrirFinalizarPedido : null}
               >
-                Finalizar Pedido
+                Avançar
               </button>
             </div>
           </div>
         </section>
+      )}
+      {isFinalizarPedidoOpen && (
+        <FinalizarPedido whatsApp={whatsApp} onClose={fecharFinalizarPedido} />
       )}
     </div>
   );

@@ -62,7 +62,9 @@ const Home_Cliente = () => {
             nome_restaurante={dadosRestaurante.outras_config.nome_restaurante}
           />
         )}
-        <Carrinho rede_sociais={dadosRestaurante.rede_sociais} />
+        {dadosRestaurante.rede_sociais && (
+          <Carrinho whatsApp={dadosRestaurante.rede_sociais.whatsapp} />
+        )}
         <BotaoTopo />
       </div>
     </CarrinhoProvider>
