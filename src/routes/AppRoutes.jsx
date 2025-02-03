@@ -11,6 +11,7 @@ import Modificar_Cardapio from "../pages/Modificar_Cardapio/Index";
 import { AuthProvider } from "../contexts/AuthContext";
 import Promocao_Dia from "../pages/Promocao_Dia/Index";
 import Configuracoes from "../pages/Configuracoes/Index";
+import Cadastrar_Bairro from "../pages/Cadastrar_Bairro/Index";
 
 const AppRoutes = () => (
   <AuthProvider>
@@ -56,6 +57,14 @@ const AppRoutes = () => (
           element={
             <ProtectedRoute>
               <Configuracoes />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cadastrar_bairro"
+          element={
+            <ProtectedRoute>
+              <Cadastrar_Bairro />
             </ProtectedRoute>
           }
         />

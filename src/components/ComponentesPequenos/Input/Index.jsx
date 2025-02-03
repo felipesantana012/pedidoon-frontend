@@ -3,7 +3,11 @@ import styles from "./Input.module.css";
 const Input = (props) => {
   return (
     <div className={styles.content_input}>
-      <label htmlFor={props.id}>{props.label}</label>
+      <label htmlFor={props.id}>
+        {props.label}{" "}
+        {props.naoObrigatorio || <span className={styles.required}>*</span>}
+      </label>
+
       <input
         type={props.type || "text"}
         onChange={props.onChange || null}
