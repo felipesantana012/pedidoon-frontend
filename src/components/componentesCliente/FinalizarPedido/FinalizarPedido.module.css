@@ -1,37 +1,107 @@
 .errorMessage {
-  color: red;
+  color: var(--cor-vermelha);
   font-size: 0.8rem;
   margin-top: 0.2rem;
 }
 
 .modalOverlay {
   position: fixed;
+  overflow-y: scroll;
   top: 0;
   left: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1001;
 }
 
 .modalContent {
-  width: 80%;
-  max-width: 63rem;
-  background: white;
-  padding: 20px;
+  width: 95%;
+  max-width: 28rem;
+  margin: 0 auto;
+  background: var(--cor-branca);
+  padding: 0.5rem;
   border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow-cliente);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modalContent h3 {
+  font-size: 1rem;
   text-align: center;
+  font-weight: 200;
+}
+
+.contato {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.nomeCliente {
+  width: 90%;
+}
+
+.ruaEnumero {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.nomeRua {
+  width: 100%;
+}
+
+.select {
+  width: 100%;
+  margin: 0.1rem 0;
+  padding: 0.3rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--cor-amarela-claro);
+  border-radius: 0.5rem;
+  outline-color: var(--cor-amarela-medio);
+  box-shadow: var(--box-shadow);
+  color: var(--cor-preta);
+}
+
+.label {
+  font-size: 0.9rem;
+}
+
+.required {
+  color: var(--cor-vermelha);
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+  border: 1px solid var(--cor-cinza-claro);
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.tabela th {
+  background: var(--cor-amarela-claro);
+  color: var(--cor-preta);
 }
 
 .btns {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .btns button {
@@ -47,9 +117,27 @@
 }
 
 .confirmButton {
-  background-color: #4caf50;
+  background-color: var(--cor-verde);
 }
 
 .btns button:hover {
   filter: brightness(0.9);
+}
+
+.valores {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pedido {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.pedido strong {
+  font-weight: 600;
+  color: var(--cor-verde);
 }

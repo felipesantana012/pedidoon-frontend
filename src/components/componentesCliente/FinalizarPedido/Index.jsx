@@ -7,6 +7,7 @@ const FinalizarPedido = ({ onClose, whatsApp }) => {
   const { itensCarrinho, calcularTotal } = useCarrinho();
   const [taxaEntrega, setTaxaEntrega] = useState(0);
   const [mensagemErro, setMensagemErro] = useState("");
+  const [trocofinal, setTrocoFinal] = useState(0);
   const [formData, setFormData] = useState({
     nomeCliente: "",
     foneCliente: "",
@@ -14,6 +15,7 @@ const FinalizarPedido = ({ onClose, whatsApp }) => {
     numero: "",
     referencia: "",
     pagamento: "",
+    observacao: "",
     bairroSelecionado: {},
     troco: "",
   });
@@ -43,7 +45,7 @@ const FinalizarPedido = ({ onClose, whatsApp }) => {
 
   const gerarMensagemWhatsApp = () => {
     const total = (parseFloat(calcularTotal()) + taxaEntrega).toFixed(2);
-
+    setTrocoFinal(formData.troco - total);
     const itensMensagem = itensCarrinho
       .map(
         (item) =>
@@ -65,22 +67,24 @@ const FinalizarPedido = ({ onClose, whatsApp }) => {
 - Número: ${formData.numero || "Não informado"}
 - Referência: ${formData.referencia || "Não informado"}
 
+*Itens do Pedido:*
+${itensMensagem}
+
+*Observações:* ${formData.observacao || "Sem observações"}
+
+*Valores:*
+*Subtotal:* R$ ${calcularTotal().toFixed(2)}
+*Taxa de entrega:* R$ ${taxaEntrega.toFixed(2)}
+*Total a pagar:* R$ ${total}
+
 *Forma de Pagamento:*
 - Método: ${formData.pagamento || "Não selecionado"}
 ${
   formData.pagamento === "Dinheiro"
-    ? `- Troco para: R$ ${formData.troco || "Não informado"}`
+    ? `- Troco para: R$ ${formData.troco || "Não informado"}
+    - Troco cliente: R$ ${trocofinal.toFixed(2)}`
     : ""
 }
-
-*Itens do Pedido:*
-${itensMensagem}
-
-*Subtotal: R$ ${calcularTotal().toFixed(2)}*
-
-*Taxa de entrega: R$ ${taxaEntrega.toFixed(2)}*
-
-*Total a pagar: R$ ${total}*
 
 Por favor, confirme o pedido.`;
   };
@@ -91,22 +95,17 @@ Por favor, confirme o pedido.`;
       formData.foneCliente,
       formData.rua,
       formData.numero,
+      formData.referencia,
       formData.bairroSelecionado.nome,
       formData.pagamento,
     ];
 
-    const camposVazios = camposObrigatorios.some((campo) => !campo);
-
     if (
-      camposVazios ||
+      camposObrigatorios.some((campo) => !campo) ||
       (formData.pagamento === "Dinheiro" && !formData.troco)
     ) {
       setMensagemErro("Antes de finalizar, preencha todos os campos.");
-
-      setTimeout(() => {
-        setMensagemErro("");
-      }, 4000);
-
+      setTimeout(() => setMensagemErro(""), 4000);
       return;
     }
 
@@ -118,29 +117,36 @@ Por favor, confirme o pedido.`;
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-        <h2>Confirme seus dados e finalize o pedido</h2>
-
         <div className={styles.dadosCliente}>
-          <Input
-            label="Nome e Sobrenome"
-            id="nomeCliente"
-            value={formData.nomeCliente}
-            onChange={handleInputChange}
-            required
-          />
-          <Input
-            label="Telefone para contato"
-            id="foneCliente"
-            value={formData.foneCliente}
-            onChange={handleInputChange}
-            placeholder="81 9 9999-9999"
-            required
-          />
+          <h3>Preencha os dados e finalize</h3>
+
+          <div className={styles.contato}>
+            <div className={styles.nomeCliente}>
+              <Input
+                label="Nome e Sobrenome"
+                id="nomeCliente"
+                value={formData.nomeCliente}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <Input
+              label="Fone contato"
+              id="foneCliente"
+              value={formData.foneCliente}
+              onChange={handleInputChange}
+              placeholder="81 9 9999-9999"
+              required
+            />
+          </div>
         </div>
 
         <div className={styles.endereco}>
-          <h3>Endereço de entrega:</h3>
+          <label className={styles.label}>
+            Endereço de entrega: <span className={styles.required}>*</span>
+          </label>
           <select
+            className={styles.select}
             id="bairroSelecionado"
             value={formData.bairroSelecionado.nome}
             onChange={handleBairroChange}
@@ -153,20 +159,26 @@ Por favor, confirme o pedido.`;
               </option>
             ))}
           </select>
-          <Input
-            label="Rua"
-            id="rua"
-            value={formData.rua}
-            onChange={handleInputChange}
-            required
-          />
-          <Input
-            label="Número"
-            id="numero"
-            value={formData.numero}
-            onChange={handleInputChange}
-            required
-          />
+          <div className={styles.ruaEnumero}>
+            <div className={styles.nomeRua}>
+              <Input
+                label="Rua"
+                id="rua"
+                value={formData.rua}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            <Input
+              label="Número"
+              id="numero"
+              value={formData.numero}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
           <Input
             label="Referência"
             id="referencia"
@@ -177,8 +189,11 @@ Por favor, confirme o pedido.`;
         </div>
 
         <div className={styles.pagamento}>
-          <h3>Forma de pagamento:</h3>
+          <label className={styles.label}>
+            Forma de pagamento: <span className={styles.required}>*</span>
+          </label>
           <select
+            className={styles.select}
             id="pagamento"
             value={formData.pagamento}
             onChange={handleInputChange}
@@ -203,20 +218,48 @@ Por favor, confirme o pedido.`;
         </div>
 
         <div className={styles.pedido}>
-          {itensCarrinho.map((item) => (
-            <div key={item.id} className={styles.item}>
-              <p>
-                {item.quantidade}x {item.nome}
-              </p>
-              <p>R$ {(item.preco * item.quantidade).toFixed(2)}</p>
+          <h3>Itens do pedido:</h3>
+          <table className={styles.tabela}>
+            <thead>
+              <tr>
+                <th>Quantidade</th>
+                <th>Nome</th>
+                <th>Preço (R$)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {itensCarrinho.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.quantidade} x</td>
+                  <td>{item.nome}</td>
+                  <td>{(item.preco * item.quantidade).toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <Input
+            naoObrigatorio={true}
+            label="Observações"
+            id="observacao"
+            value={formData.observacao}
+            onChange={handleInputChange}
+          />
+          <div className={styles.valores}>
+            <div className={styles.valor}>
+              <p>Subtotal:</p>
+              <p>R$ {calcularTotal().toFixed(2)}</p>
             </div>
-          ))}
-          <p>Subtotal: R$ {calcularTotal().toFixed(2)}</p>
-          <p>Valor da taxa: R$ {taxaEntrega.toFixed(2)}</p>
-          <p>
-            Total a Pagar: R$
-            {(parseFloat(calcularTotal()) + taxaEntrega).toFixed(2)}
-          </p>
+            <div className={styles.valor}>
+              <p>Taxa entrega:</p>
+              <p>R$ {taxaEntrega.toFixed(2)}</p>
+            </div>
+            <div className={styles.valor}>
+              <p>Total pagar:</p>
+              <strong>
+                R$ {(parseFloat(calcularTotal()) + taxaEntrega).toFixed(2)}
+              </strong>
+            </div>
+          </div>
         </div>
 
         <div className={styles.btns}>
