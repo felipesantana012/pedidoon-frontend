@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCarrinho } from "../../../contexts/CarrinhoContext";
 import styles from "./FinalizarPedido.module.css";
 import Input from "../../ComponentesPequenos/Input/Index";
+import { apiService } from "../../../services/apiService";
+import Loading from "../../../components/Loading/Index";
 
 const FinalizarPedido = ({ onClose, whatsApp }) => {
   const { itensCarrinho, calcularTotal } = useCarrinho();
+  const [loading, setLoading] = useState(false);
+  const [bairros, setBairros] = useState([]);
   const [taxaEntrega, setTaxaEntrega] = useState(0);
   const [mensagemErro, setMensagemErro] = useState("");
   const [trocofinal, setTrocoFinal] = useState(0);
@@ -16,15 +20,25 @@ const FinalizarPedido = ({ onClose, whatsApp }) => {
     referencia: "",
     pagamento: "",
     observacao: "",
-    bairroSelecionado: {},
+    bairroSelecionado: "",
     troco: "",
   });
 
-  const bairros = [
-    { nome: "Bairro 1", valor: 5.0 },
-    { nome: "Bairro 2", valor: 10.0 },
-    { nome: "Bairro 3", valor: 15.0 },
-  ];
+  const getBairros = async () => {
+    setLoading(true);
+    try {
+      const res = await apiService.get("bairros_entrega");
+      setBairros(res || []);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getBairros();
+  }, []);
 
   const pagamentos = ["Cartão", "Dinheiro", "Pix"];
 
@@ -34,18 +48,28 @@ const FinalizarPedido = ({ onClose, whatsApp }) => {
   };
 
   const handleBairroChange = (e) => {
-    const bairro = bairros.find((b) => b.nome === e.target.value);
-    if (bairro) {
-      setFormData((prev) => ({ ...prev, bairroSelecionado: bairro }));
-      setTaxaEntrega(bairro.valor);
-    } else {
+    const selectedValue = e.target.value;
+
+    if (selectedValue === "0") {
+      setFormData((prev) => ({ ...prev, bairroSelecionado: "" }));
       setTaxaEntrega(0);
+    } else {
+      const bairro = bairros.find((b) => b.nome === selectedValue);
+      if (bairro) {
+        setFormData((prev) => ({ ...prev, bairroSelecionado: bairro.nome }));
+        setTaxaEntrega(parseFloat(bairro.taxa));
+      } else {
+        setFormData((prev) => ({ ...prev, bairroSelecionado: "" }));
+        setTaxaEntrega(0);
+      }
     }
   };
 
   const gerarMensagemWhatsApp = () => {
-    const total = (parseFloat(calcularTotal()) + taxaEntrega).toFixed(2);
-    setTrocoFinal(formData.troco - total);
+    const total = (
+      parseFloat(calcularTotal()) + parseFloat(taxaEntrega || 0)
+    ).toFixed(2);
+
     const itensMensagem = itensCarrinho
       .map(
         (item) =>
@@ -62,7 +86,7 @@ const FinalizarPedido = ({ onClose, whatsApp }) => {
 - Telefone: ${formData.foneCliente || "Não informado"}
 
 *Endereço de Entrega:*
-- Bairro: ${formData.bairroSelecionado?.nome || "Não selecionado"}
+- Bairro: ${formData.bairroSelecionado || "Não selecionado"}
 - Rua: ${formData.rua || "Não informado"}
 - Número: ${formData.numero || "Não informado"}
 - Referência: ${formData.referencia || "Não informado"}
@@ -90,13 +114,21 @@ Por favor, confirme o pedido.`;
   };
 
   const finalizarPedido = () => {
+    const total = (
+      parseFloat(calcularTotal()) + parseFloat(taxaEntrega || 0)
+    ).toFixed(2);
+
+    const trocoCliente =
+      formData.pagamento === "Dinheiro" ? formData.troco - total : 0;
+
+    setTrocoFinal(trocoCliente);
     const camposObrigatorios = [
       formData.nomeCliente,
       formData.foneCliente,
       formData.rua,
       formData.numero,
       formData.referencia,
-      formData.bairroSelecionado.nome,
+      formData.bairroSelecionado,
       formData.pagamento,
     ];
 
@@ -112,11 +144,13 @@ Por favor, confirme o pedido.`;
     const mensagem = encodeURIComponent(gerarMensagemWhatsApp());
     const linkWhatsApp = `https://api.whatsapp.com/send?phone=${whatsApp}&text=${mensagem}`;
     window.open(linkWhatsApp, "_blank");
+    onClose();
   };
 
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
+        {loading && <Loading />}
         <div className={styles.dadosCliente}>
           <h3>Preencha os dados e finalize</h3>
 
@@ -148,14 +182,14 @@ Por favor, confirme o pedido.`;
           <select
             className={styles.select}
             id="bairroSelecionado"
-            value={formData.bairroSelecionado.nome}
+            value={formData.bairroSelecionado}
             onChange={handleBairroChange}
             required
           >
-            <option value="">Selecione o bairro</option>
+            <option value="0">Selecione o bairro</option>
             {bairros.map((bairro) => (
               <option key={bairro.nome} value={bairro.nome}>
-                {bairro.nome} - R$ {bairro.valor.toFixed(2)}
+                {bairro.nome} - R$ {bairro.taxa}
               </option>
             ))}
           </select>
