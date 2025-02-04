@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useCarrinho } from "../../../contexts/CarrinhoContext";
 import styles from "./FinalizarPedido.module.css";
 import Input from "../../ComponentesPequenos/Input/Index";
-import { apiService } from "../../../services/apiService";
-import Loading from "../../../components/Loading/Index";
 
-const FinalizarPedido = ({ onClose, whatsApp }) => {
+const FinalizarPedido = ({ onClose, whatsApp, bairros }) => {
   const { itensCarrinho, calcularTotal } = useCarrinho();
-  const [loading, setLoading] = useState(false);
-  const [bairros, setBairros] = useState([]);
   const [taxaEntrega, setTaxaEntrega] = useState(0);
   const [mensagemErro, setMensagemErro] = useState("");
   const [trocofinal, setTrocoFinal] = useState(0);
@@ -23,22 +19,6 @@ const FinalizarPedido = ({ onClose, whatsApp }) => {
     bairroSelecionado: "",
     troco: "",
   });
-
-  const getBairros = async () => {
-    setLoading(true);
-    try {
-      const res = await apiService.get("bairros_entrega");
-      setBairros(res || []);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getBairros();
-  }, []);
 
   const pagamentos = ["Cartão", "Dinheiro", "Pix"];
 
@@ -150,7 +130,6 @@ Por favor, confirme o pedido.`;
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-        {loading && <Loading />}
         <div className={styles.dadosCliente}>
           <h3>Preencha os dados e finalize</h3>
 
@@ -187,11 +166,12 @@ Por favor, confirme o pedido.`;
             required
           >
             <option value="0">Selecione o bairro</option>
-            {bairros.map((bairro) => (
-              <option key={bairro.nome} value={bairro.nome}>
-                {bairro.nome} - R$ {bairro.taxa}
-              </option>
-            ))}
+            {bairros &&
+              bairros.map((bairro) => (
+                <option key={bairro.nome} value={bairro.nome}>
+                  {bairro.nome} - R$ {bairro.taxa}
+                </option>
+              ))}
           </select>
           <div className={styles.ruaEnumero}>
             <div className={styles.nomeRua}>
