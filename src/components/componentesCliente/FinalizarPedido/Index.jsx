@@ -49,6 +49,8 @@ const FinalizarPedido = ({ onClose, whatsApp, bairros }) => {
     const total = (
       parseFloat(calcularTotal()) + parseFloat(taxaEntrega || 0)
     ).toFixed(2);
+    const trocoCliente = parseFloat(formData.troco) - parseFloat(total);
+    setTrocoFinal(trocoCliente);
 
     const itensMensagem = itensCarrinho
       .map(
@@ -86,7 +88,7 @@ ${itensMensagem}
 ${
   formData.pagamento === "Dinheiro"
     ? `- Troco para: R$ ${formData.troco || "Não informado"}
-    - Troco cliente: R$ ${trocofinal.toFixed(2)}`
+    - Troco cliente: R$ ${trocoCliente.toFixed(2)}`
     : ""
 }
 
@@ -94,14 +96,6 @@ Por favor, confirme o pedido.`;
   };
 
   const finalizarPedido = () => {
-    const total = (
-      parseFloat(calcularTotal()) + parseFloat(taxaEntrega || 0)
-    ).toFixed(2);
-
-    const trocoCliente =
-      formData.pagamento === "Dinheiro" ? formData.troco - total : 0;
-
-    setTrocoFinal(trocoCliente);
     const camposObrigatorios = [
       formData.nomeCliente,
       formData.foneCliente,
@@ -117,6 +111,16 @@ Por favor, confirme o pedido.`;
       (formData.pagamento === "Dinheiro" && !formData.troco)
     ) {
       setMensagemErro("Antes de finalizar, preencha todos os campos.");
+      setTimeout(() => setMensagemErro(""), 4000);
+      return;
+    }
+
+    if (
+      formData.pagamento === "Dinheiro" &&
+      parseFloat(formData.troco) <
+        parseFloat(calcularTotal()) + parseFloat(taxaEntrega)
+    ) {
+      setMensagemErro("O valor do troco deve ser maior que o total a pagar.");
       setTimeout(() => setMensagemErro(""), 4000);
       return;
     }
