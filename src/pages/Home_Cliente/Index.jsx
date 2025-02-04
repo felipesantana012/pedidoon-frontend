@@ -62,8 +62,12 @@ const Home_Cliente = () => {
             nome_restaurante={dadosRestaurante.outras_config.nome_restaurante}
           />
         )}
+
         {dadosRestaurante.rede_sociais && (
-          <Carrinho whatsApp={dadosRestaurante.rede_sociais.whatsapp} />
+          <Carrinho
+            bairros={dadosRestaurante.bairros_entrega || []}
+            whatsApp={dadosRestaurante.rede_sociais.whatsapp}
+          />
         )}
         <BotaoTopo />
       </div>

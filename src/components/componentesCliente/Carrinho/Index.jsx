@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useCarrinho } from "../../../contexts/CarrinhoContext";
 import FinalizarPedido from "../FinalizarPedido/Index";
 
-const Carrinho = ({ whatsApp }) => {
+const Carrinho = ({ whatsApp, bairros }) => {
   const { itensCarrinho, removerDoCarrinho, calcularTotal } = useCarrinho();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFinalizarPedidoOpen, setIsFinalizarPedidoOpen] = useState(false);
@@ -69,7 +69,11 @@ const Carrinho = ({ whatsApp }) => {
         </section>
       )}
       {isFinalizarPedidoOpen && (
-        <FinalizarPedido whatsApp={whatsApp} onClose={fecharFinalizarPedido} />
+        <FinalizarPedido
+          bairros={bairros}
+          whatsApp={whatsApp}
+          onClose={fecharFinalizarPedido}
+        />
       )}
     </div>
   );
