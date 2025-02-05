@@ -4,14 +4,14 @@
 }
 
 .content_input label {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .content_input input {
   width: 100%;
   margin: 0.1rem 0;
   padding: 0.4rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   border: 1px solid var(--cor-amarela-claro);
   border-radius: 0.5rem;
   outline-color: var(--cor-amarela-medio);

@@ -15,7 +15,7 @@ import Carrinho from "../../components/componentesCliente/Carrinho/Index";
 import { CarrinhoProvider } from "../../contexts/CarrinhoContext";
 
 const Home_Cliente = () => {
-  const { restaurante_id } = useParams();
+  const { url } = useParams();
   const {
     getDadosRestaurante,
     dadosRestaurante,
@@ -25,8 +25,8 @@ const Home_Cliente = () => {
   } = useDadosRestauranteCliente();
 
   useEffect(() => {
-    getDadosRestaurante(restaurante_id);
-  }, [restaurante_id]);
+    getDadosRestaurante(url);
+  }, [url]);
 
   return (
     <CarrinhoProvider>

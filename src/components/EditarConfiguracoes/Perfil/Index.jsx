@@ -14,6 +14,7 @@ const Perfil = () => {
     img_logo: "",
     nome_restaurante: "",
     nome_proprietario: "",
+    url: "",
   });
   const [novaImgLogo, setNovaImgLogo] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -50,6 +51,7 @@ const Perfil = () => {
       }
       formData.append("nome_restaurante", perfil.nome_restaurante);
       formData.append("nome_proprietario", perfil.nome_proprietario);
+      formData.append("url", perfil.url);
 
       await apiService.put("/outras_config", formData);
       showAlertSuccess("Perfil atualizado com sucesso!");
@@ -91,26 +93,37 @@ const Perfil = () => {
           </div>
 
           <div className={styles.info}>
-            <Input
-              id="nome_restaurante"
-              label="Nome Restaurante:"
-              type="text"
-              name="nome_restaurante"
-              value={perfil.nome_restaurante}
-              onChange={handleInputChange}
-              required
-            />
+            <div className={styles.content_info}>
+              <Input
+                id="nome_restaurante"
+                label="Nome Restaurante:"
+                type="text"
+                name="nome_restaurante"
+                value={perfil.nome_restaurante}
+                onChange={handleInputChange}
+                required
+              />
 
-            <Input
-              id="nome_proprietario"
-              label="Nome Proprietário:"
-              type="text"
-              name="nome_proprietario"
-              value={perfil.nome_proprietario}
-              onChange={handleInputChange}
-              required
-            />
+              <Input
+                id="nome_proprietario"
+                label="Nome Proprietário:"
+                type="text"
+                name="nome_proprietario"
+                value={perfil.nome_proprietario}
+                onChange={handleInputChange}
+                required
+              />
 
+              <Input
+                id="url"
+                label="URL Restaurante:"
+                type="text"
+                name="url"
+                value={perfil.url}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
             <Button nome="Salvar" type="submit" />
           </div>
         </form>

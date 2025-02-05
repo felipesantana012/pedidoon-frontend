@@ -16,7 +16,7 @@ import Cadastrar_Bairro from "../pages/Cadastrar_Bairro/Index";
 const AppRoutes = () => (
   <AuthProvider>
     <Routes>
-      <Route path="/restaurante/:restaurante_id" element={<Home_Cliente />} />
+      <Route path="/restaurante/:url" element={<Home_Cliente />} />
       <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<Login />} />
       <Route element={<PaginaBase />}>

@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className={styles.rodape}>
       {restaurante ? (
         <a
-          href={`/restaurante/${restaurante.restaurante_id}`}
+          href={`/restaurante/${restaurante.url}`}
           target="_blank"
           rel="noopener noreferrer"
         >
