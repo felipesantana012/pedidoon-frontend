@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }
 
 .container h2 {
@@ -21,7 +22,7 @@
   box-shadow: var(--box-shadow);
 }
 
-.listaBairro {
+.lista_pagamentos {
   width: 100%;
   max-width: 40rem;
   margin: 0 auto;
@@ -34,6 +35,8 @@
 
 .tabela {
   width: 100%;
+  max-width: 30rem;
+  margin: 0 auto;
   border-collapse: collapse;
   margin-top: 0.7rem;
 }
@@ -105,6 +108,7 @@
 .modalBotoes button:hover {
   filter: brightness(0.9);
 }
+
 .botaoCancelar {
   background-color: #6c757d;
   color: var(--cor-branca);
