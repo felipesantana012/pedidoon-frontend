@@ -10,17 +10,15 @@ export const useDadosRestauranteCliente = () => {
   const [promocaoDia, setPromocaoDia] = useState({});
   const [dadosRestaurante, setDadosRestaurante] = useState({});
 
-  const getDadosRestaurante = async (restaurante_id) => {
+  const getDadosRestaurante = async (url) => {
     setLoading(true);
     try {
-      const res = await apiService.get(
-        `/dados_restaurante_cliente/${restaurante_id}`
-      );
+      const res = await apiService.get(`/dados_restaurante_cliente/${url}`);
       setDadosRestaurante(res);
     } catch (error) {
       console.log(error);
       navigate("/nao-encontrada");
-      showAlertError("Erro ao buscar dados do restaurante");
+      showAlertError(error.message);
     } finally {
       setLoading(false);
     }

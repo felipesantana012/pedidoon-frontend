@@ -17,7 +17,7 @@
 
 .select {
   color: var(--cor-preta);
-  padding: 0.5rem;
+  padding: 0.4rem;
   border: 1px solid var(--cor-amarela-claro);
   border-radius: 0.6rem;
   outline-color: var(--cor-amarela-medio);

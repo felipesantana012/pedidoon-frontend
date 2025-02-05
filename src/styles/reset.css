@@ -19,6 +19,23 @@ h6 {
   font-family: var(--fonte-titulo);
 }
 
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.2rem;
+}
+h3 {
+  font-size: 0.9rem;
+}
+h4 {
+  font-size: 0.8rem;
+}
+
+label {
+  font-size: 0.8rem;
+}
+
 li {
   list-style: none;
 }
