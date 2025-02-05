@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { apiService } from "../services/apiService";
 import { showAlertError } from "../services/alertService";
-import { useNavigate } from "react-router-dom";
 
 export const useDadosRestauranteCliente = () => {
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [itensImgNome, setItensImgNome] = useState([]);
   const [promocaoDia, setPromocaoDia] = useState({});
@@ -17,8 +15,7 @@ export const useDadosRestauranteCliente = () => {
       setDadosRestaurante(res);
     } catch (error) {
       console.log(error);
-      navigate("/nao-encontrada");
-      showAlertError(error.message);
+      showAlertError("Error ", error.message);
     } finally {
       setLoading(false);
     }
