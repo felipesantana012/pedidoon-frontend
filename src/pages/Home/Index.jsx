@@ -6,6 +6,7 @@ import { GrDocumentConfig } from "react-icons/gr";
 import { LuTextSelect } from "react-icons/lu";
 import { HiHome } from "react-icons/hi2";
 import { GiReceiveMoney } from "react-icons/gi";
+import { RiFileList3Line } from "react-icons/ri";
 
 const Home = () => {
   return (
@@ -33,7 +34,6 @@ const Home = () => {
           <GrDocumentConfig className={styles.icon} />
           <p>Edite seus dados de Perfil</p>
         </Link>
-
         <Link className={styles.card} to="/cadastrar_bairro">
           <h2>Cadastrar Bairros</h2>
           <HiHome className={styles.icon} />
@@ -42,7 +42,12 @@ const Home = () => {
         <Link className={styles.card} to="/pagamento">
           <h2>Forma de Pagamento</h2>
           <GiReceiveMoney className={styles.icon} />
-          <p>Cadastre ou altere formas de pagamento</p>
+          <p>Modifique formas de pagamento</p>
+        </Link>
+        <Link className={styles.card} to="/historico_pedidos">
+          <h2>Historico de pedidos</h2>
+          <RiFileList3Line className={styles.icon} />
+          <p>Verifique todos seus pedidos</p>
         </Link>
       </section>
     </div>

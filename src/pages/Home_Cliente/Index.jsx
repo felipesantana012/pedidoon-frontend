@@ -65,6 +65,7 @@ const Home_Cliente = () => {
 
         {dadosRestaurante.rede_sociais && (
           <Carrinho
+            pagamento={dadosRestaurante.pagamento || []}
             bairros={dadosRestaurante.bairros_entrega || []}
             whatsApp={dadosRestaurante.rede_sociais.whatsapp}
           />
