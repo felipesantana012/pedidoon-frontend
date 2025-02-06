@@ -5,6 +5,7 @@ import { GiPriceTag } from "react-icons/gi";
 import { GrDocumentConfig } from "react-icons/gr";
 import { LuTextSelect } from "react-icons/lu";
 import { HiHome } from "react-icons/hi2";
+import { GiReceiveMoney } from "react-icons/gi";
 
 const Home = () => {
   return (
@@ -37,6 +38,11 @@ const Home = () => {
           <h2>Cadastrar Bairros</h2>
           <HiHome className={styles.icon} />
           <p>Cadastre o bairro e a taxa de entrega</p>
+        </Link>
+        <Link className={styles.card} to="/pagamento">
+          <h2>Forma de Pagamento</h2>
+          <GiReceiveMoney className={styles.icon} />
+          <p>Cadastre ou altere formas de pagamento</p>
         </Link>
       </section>
     </div>

@@ -48,7 +48,7 @@ const RedeSociais = () => {
       showAlertSuccess("Redes sociais atualizadas com sucesso!");
       getRedeSociais();
     } catch (error) {
-      showAlertError("Erro ao salvar as redes sociais. " + error.message);
+      showAlertError("Erro ao salvar as redes sociais. ", error.message);
       console.error(error);
     } finally {
       setLoading(false);

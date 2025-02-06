@@ -58,7 +58,7 @@ const Perfil = () => {
       getPerfil();
     } catch (error) {
       console.error("Erro ao salvar o perfil:", error);
-      showAlertError("Erro ao salvar o perfil. " + error.message);
+      showAlertError("Erro ao salvar o perfil. ", error.message);
     } finally {
       setLoading(false);
     }

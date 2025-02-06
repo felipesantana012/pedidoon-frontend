@@ -60,11 +60,11 @@ const Cardapio = ({ categorias }) => {
                         Adicionar
                       </button>
                       <div className={styles.contador}>
-                        <i onClick={() => atualizarQuantidade(item.id, 1)}>+</i>
-                        <span>{quantidades[item.id] || 0}</span>
                         <i onClick={() => atualizarQuantidade(item.id, -1)}>
                           -
                         </i>
+                        <span>{quantidades[item.id] || 0}</span>
+                        <i onClick={() => atualizarQuantidade(item.id, 1)}>+</i>
                       </div>
                     </div>
                     {erros[item.id] && (

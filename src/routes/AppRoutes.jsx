@@ -12,6 +12,7 @@ import { AuthProvider } from "../contexts/AuthContext";
 import Promocao_Dia from "../pages/Promocao_Dia/Index";
 import Configuracoes from "../pages/Configuracoes/Index";
 import Cadastrar_Bairro from "../pages/Cadastrar_Bairro/Index";
+import Pagamento from "../pages/Pagamento/Index";
 
 const AppRoutes = () => (
   <AuthProvider>
@@ -65,6 +66,14 @@ const AppRoutes = () => (
           element={
             <ProtectedRoute>
               <Cadastrar_Bairro />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/pagamento"
+          element={
+            <ProtectedRoute>
+              <Pagamento />
             </ProtectedRoute>
           }
         />

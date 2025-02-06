@@ -62,7 +62,7 @@ const Endereco = () => {
       getEndereco();
     } catch (error) {
       console.error("Erro ao salvar dados do Endereco:", error);
-      showAlertError("Erro ao salvar dados do Endereco: " + error.message);
+      showAlertError("Erro ao salvar dados do Endereco: ", error.message);
     } finally {
       setLoading(false);
     }
