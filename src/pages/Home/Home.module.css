@@ -4,6 +4,9 @@
   align-items: center;
   gap: 1rem;
   flex-direction: column;
+  width: 100%;
+  max-width: 60rem;
+  margin: 0 auto;
 }
 
 .home h1 {
@@ -13,12 +16,14 @@
 .container_cards {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 2rem;
+  padding: 1rem;
+  justify-content: center;
 }
 
 .card {
-  background-color: white;
+  background-color: var(--cor-branca);
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: var(--box-shadow);
@@ -50,4 +55,10 @@
 .icon {
   font-size: 4rem;
   color: var(--cor-amarela-medio);
+}
+
+@media screen and (max-width: 750px) {
+  .container_cards {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
 }

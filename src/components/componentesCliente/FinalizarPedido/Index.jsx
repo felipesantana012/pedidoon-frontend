@@ -3,7 +3,7 @@ import { useCarrinho } from "../../../contexts/CarrinhoContext";
 import styles from "./FinalizarPedido.module.css";
 import Input from "../../ComponentesPequenos/Input/Index";
 
-const FinalizarPedido = ({ onClose, whatsApp, bairros }) => {
+const FinalizarPedido = ({ onClose, whatsApp, bairros, pagamento }) => {
   const { itensCarrinho, calcularTotal } = useCarrinho();
   const [taxaEntrega, setTaxaEntrega] = useState(0);
   const [mensagemErro, setMensagemErro] = useState("");
@@ -19,8 +19,6 @@ const FinalizarPedido = ({ onClose, whatsApp, bairros }) => {
     bairroSelecionado: "",
     troco: "",
   });
-
-  const pagamentos = ["Cartão", "Dinheiro", "Pix"];
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -110,7 +108,7 @@ Por favor, confirme o pedido.`;
       camposObrigatorios.some((campo) => !campo) ||
       (formData.pagamento === "Dinheiro" && !formData.troco)
     ) {
-      setMensagemErro("Antes de finalizar, preencha todos os campos.");
+      setMensagemErro("Antes de finalizar, preencha os campos obrigatorios *.");
       setTimeout(() => setMensagemErro(""), 4000);
       return;
     }
@@ -218,11 +216,12 @@ Por favor, confirme o pedido.`;
             required
           >
             <option value="">Selecione o método</option>
-            {pagamentos.map((tipo) => (
-              <option key={tipo} value={tipo}>
-                {tipo}
-              </option>
-            ))}
+            {pagamento &&
+              pagamento.map((pag) => (
+                <option key={pag.id} value={pag.forma}>
+                  {pag.forma}
+                </option>
+              ))}
           </select>
           {formData.pagamento === "Dinheiro" && (
             <Input

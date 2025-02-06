@@ -13,6 +13,7 @@ import Promocao_Dia from "../pages/Promocao_Dia/Index";
 import Configuracoes from "../pages/Configuracoes/Index";
 import Cadastrar_Bairro from "../pages/Cadastrar_Bairro/Index";
 import Pagamento from "../pages/Pagamento/Index";
+import Historico_Pedidos from "../pages/Historico_Pedidos/Index";
 
 const AppRoutes = () => (
   <AuthProvider>
@@ -74,6 +75,14 @@ const AppRoutes = () => (
           element={
             <ProtectedRoute>
               <Pagamento />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/historico_pedidos"
+          element={
+            <ProtectedRoute>
+              <Historico_Pedidos />
             </ProtectedRoute>
           }
         />
