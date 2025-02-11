@@ -97,7 +97,7 @@ const Login = () => {
         <p>
           Não tem uma conta?{" "}
           <a
-            href="https://wa.me/5531999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20uma%20conta%20no%20PeddidOOn"
+            href="https://wa.me/5581988742454?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20uma%20conta%20no%20PeddidOOn"
             target="_blank"
           >
             Solicite Agora!

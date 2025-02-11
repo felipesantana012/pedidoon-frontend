@@ -97,3 +97,8 @@ No `package.json`, estão configurados os seguintes scripts:
 
 - Verção Restaurante ADM : https://pedidoon.felipedev.app.br/
 - Verção Cliente : https://pedidoon.felipedev.app.br/restaurante/site_teste
+
+## Acesso
+
+- email: felipe@gmail.com
+- senha: 1234
